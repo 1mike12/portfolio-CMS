@@ -1,0 +1,33 @@
+body {
+  font-family: 'Open Sans', sans-serif; }
+
+#header {
+  background: #333;
+  color: #FFF;
+  height: 60px; }
+
+#messageBanner {
+  background: #FFFFCC;
+  padding: 10px;
+  margin: 10px; }
+
+#contentWrapper {
+  padding: 0 40px 40px 40px; }
+
+#footer {
+  height: 200px;
+  background: #333;
+  color: #FFF; }
+
+/*responsive sticky footer=============*/
+html, body {
+  height: 100%;
+  margin: 0; }
+
+body {
+  display: table;
+  height: 100%;
+  width: 100%; }
+
+#footer {
+  display: table-row; }
