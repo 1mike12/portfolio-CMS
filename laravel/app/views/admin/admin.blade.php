@@ -8,7 +8,7 @@
             <a href="{{URL::action("TalentController@getEdit", [$array["talent"]->id])}}">edit</a>
         </h2>
         @if(count($array["projects"])>0)
-            <table class="table">
+            <table class="table table-hover">
                 <tbody>
                     <tr>
                         <th>Project Name</th>

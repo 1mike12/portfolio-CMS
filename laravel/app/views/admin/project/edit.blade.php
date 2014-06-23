@@ -62,21 +62,21 @@
         {{ Form::text('cover', $instance->cover, array('class'=>'form-control', 'placeholder'=>'cover')) }}
     </div>
 </div>
-
-{{ Form::submit('Submit', array('class'=>''))}}
+{{ Form::submit('Submit', array('class'=>'btn btn-primary'))}}
 {{ Form::close() }}
-
 @if (isset($delete))
-{{ Form::open(array('action'=>$delete, 'class'=>'form-signup')) }}
+{{ Form::open(array('action'=>$delete, 'class'=>'')) }}
 {{ Form::hidden("id", $instance->id)}}
-{{ Form::submit("Delete ". $model)}}
+{{ Form::submit("Delete ". $model, ["class"=>"btn btn-warning"])}}
 {{ Form::close() }}
 @endif
 
-@if(isset($delete))
-<h3>Photos</h3>
 
-{{ Form::button("add new photo", ["class"=>"addNewPhoto"])}}
+
+
+@if(isset($delete))
+<h2>Photos</h2>
+{{ Form::button("add new photo", ["class"=>"addNewPhoto", "project_id"=>$instance->id])}}
 <div id="photoFormWrapper">
     @foreach($photos as $photo)
     @include("admin.photo.field")

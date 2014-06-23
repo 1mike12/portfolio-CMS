@@ -65,7 +65,6 @@ class DatabaseController extends BaseController {
             $table->integer("project_id")->index()->unsigned();
             $table->string("name", 255);
             $table->string("caption", 255)->nullable();
-            $table->string("path", 255);
             $table->string("extension", 12);
             $table->integer("weight");
             $table->timestamps();
