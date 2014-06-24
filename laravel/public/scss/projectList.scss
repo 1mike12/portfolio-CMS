@@ -1,0 +1,15 @@
+@import"_variables.scss";
+.slideEpi{
+    -webkit-box-shadow: 0px 0px 2px 2px rgba(0,0,0,0.4);
+    -moz-box-shadow: 0px 0px 2px 2px rgba(0,0,0,0.4);
+    box-shadow: 0px 0px 2px 2px rgba(0,0,0,0.4);
+    background:#FFF;
+}
+
+.slideTab{
+    font-size:20px;
+    color:$grey-1;
+    float:left;
+}
+
+//chart styles

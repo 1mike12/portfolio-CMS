@@ -2,12 +2,12 @@ $(document).ready(function() {
 
     //Adding new photo fields
     $("#contentWrapper").on("click", ".addNewPhoto", function() {
-        var project_id= $(this).attr("project_id");
+        var project_id = $(this).attr("project_id");
         $.ajax({
             url: ADMIN + "photo/photofield",
             type: "GET",
             success: function(data, status) {
-                var field= $(data);
+                var field = $(data);
                 field.find("input[name='project_id']").val(project_id);
                 $("#photoFormWrapper").append(field);
             }
@@ -26,11 +26,11 @@ $(document).ready(function() {
             $.ajax({
                 url: url,
                 type: "POST",
-                data: id,
+                data: {"id": id},
                 success: function(payload, status) {
-                    if(payload.success){
+                    if (payload.success) {
                         del.closest(".photoForm").remove();
-                    }else{
+                    } else {
                         console.log(payload.messages);
                     }
                 },
@@ -45,8 +45,9 @@ $(document).ready(function() {
         e.preventDefault();
 
         var form = $(this);
-        var img= form.find(".photoFieldThumbnail");
-        img.attr("src", PUBLIC + "assets/loader.gif" );
+        var img = form.find(".photoFieldThumbnail");
+        var imgOGPath= img.attr("src");
+        
         var file = form.find("input[name='photo']");
         var submitButton = form.find(".photoSubmit");
         var errorDiv = form.find(".bg-warning");
@@ -54,8 +55,10 @@ $(document).ready(function() {
         var fd = new FormData(e.target);
         var id = form.find("input[name='id']");
 
-        //creating a photo
+        //creating a photo////////////////////////////
         if (id.val() === "") {
+            //change image to spinner
+            img.attr("src", PUBLIC + "assets/loader.gif");
             var url = ADMIN + "photo/create";
             $.ajax({
                 url: url,
@@ -69,8 +72,29 @@ $(document).ready(function() {
                     console.log(payload);
                 },
                 error: function(payload, status) {
-                    submitButton.button("reset");
                     submitButton.closest(".photoForm").find(".bg-warning").html(url + "not found, 404 error, -1mike12");
+                }
+            });
+            //editing a photo///////////////////////////
+        } else {
+            var url = ADMIN + "photo/edit";
+            $.ajax({
+                url: url,
+                type: "POST",
+                data: fd,
+                processData: false, // tell jQuery not to process the data
+                contentType: false, // tell jQuery not to set contentType
+                success: function(payload, status) {
+                    if (payload.success) {
+                        img.attr("src", imgOGPath + "?timestamp=" + new Date().getTime());
+                    } else {
+                        errorDiv.html(payload.messages);
+                        img.attr("src", imgOGPath);
+                    }
+                    console.log(payload);
+                },
+                error: function(payload, status) {
+                    errorDiv.html(url + "not found, 404 error, -1mike12");
                 }
             });
         }

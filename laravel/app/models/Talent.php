@@ -7,5 +7,9 @@ class Talent extends Eloquent {
     public static $rules = [
         'name' => 'required|alpha|min:2',
     ];
+    
+    public function skills() {
+        return $this->hasMany('Skill');
+    }
 
 }

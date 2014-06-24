@@ -1,10 +1,79 @@
+.fadeLine {
+  height: 1px;
+  background: #d6d6d6;
+  /* Old browsers */
+  background: -moz-radial-gradient(center, ellipse cover, #d6d6d6 59%, white 71%);
+  /* FF3.6+ */
+  background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(59%, #d6d6d6), color-stop(71%, white));
+  /* Chrome,Safari4+ */
+  background: -webkit-radial-gradient(center, ellipse cover, #d6d6d6 59%, white 71%);
+  /* Chrome10+,Safari5.1+ */
+  background: -o-radial-gradient(center, ellipse cover, #d6d6d6 59%, white 71%);
+  /* Opera 12+ */
+  background: -ms-radial-gradient(center, ellipse cover, #d6d6d6 59%, white 71%);
+  /* IE10+ */
+  background: radial-gradient(ellipse at center, #d6d6d6 59%, white 71%);
+  /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#d6d6d6', endColorstr='#ffffff',GradientType=1 );
+  /* IE6-9 fallback on horizontal gradient */ }
+
+.r-90 {
+  -moz-transform: rotate(-270deg);
+  -moz-transform-origin: bottom left;
+  -webkit-transform: rotate(-270deg);
+  -webkit-transform-origin: bottom left;
+  -o-transform: rotate(-270deg);
+  -o-transform-origin: bottom left;
+  -ms-transform: rotate(90deg);
+  filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=1);
+  float: left; }
+
 body {
-  font-family: 'Open Sans', sans-serif; }
+  font-family: 'Open Sans', sans-serif;
+  background: #ffffff;
+  /* Old browsers */
+  background: -moz-radial-gradient(center, ellipse cover, white 66%, #dddddd 100%, #dddddd 100%);
+  /* FF3.6+ */
+  background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(66%, white), color-stop(100%, #dddddd), color-stop(100%, #dddddd));
+  /* Chrome,Safari4+ */
+  background: -webkit-radial-gradient(center, ellipse cover, white 66%, #dddddd 100%, #dddddd 100%);
+  /* Chrome10+,Safari5.1+ */
+  background: -o-radial-gradient(center, ellipse cover, white 66%, #dddddd 100%, #dddddd 100%);
+  /* Opera 12+ */
+  background: -ms-radial-gradient(center, ellipse cover, white 66%, #dddddd 100%, #dddddd 100%);
+  /* IE10+ */
+  background: radial-gradient(ellipse at center, white 66%, #dddddd 100%, #dddddd 100%);
+  /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#dddddd',GradientType=1 );
+  /* IE6-9 fallback on horizontal gradient */ }
 
 #header {
-  background: #333;
-  color: #FFF;
-  height: 60px; }
+  padding: 25px 40px;
+  border-bottom: 1px solid #DDD;
+  background: #FFF; }
+  #header #logo {
+    font-size: 20px;
+    color: #444444;
+    text-decoration: none; }
+    #header #logo:hover {
+      color: #428bca; }
+  #header ul {
+    list-style-type: none; }
+    #header ul:before, #header ul:after {
+      content: "";
+      display: table; }
+    #header ul:after {
+      clear: both; }
+    #header ul li {
+      display: inline;
+      float: right; }
+      #header ul li a {
+        display: block;
+        padding: 0 25px; }
+
+#belt {
+  margin: auto;
+  max-width: 1040px; }
 
 #messageBanner {
   background: #FFFFCC;
@@ -14,20 +83,17 @@ body {
 #contentWrapper {
   padding: 0 40px 40px 40px; }
 
-#footer {
-  height: 200px;
-  background: #333;
-  color: #FFF; }
-
 /*responsive sticky footer=============*/
-html, body {
-  height: 100%;
-  margin: 0; }
+#wrap {
+  min-height: 100%;
+  height: auto;
+  /* Negative indent footer by its height */
+  margin: 0 auto -60px;
+  /* Pad bottom by footer height */
+  padding: 0 0 60px; }
 
-body {
-  display: table;
-  height: 100%;
-  width: 100%; }
-
+/* Set the fixed height of the footer here */
 #footer {
-  display: table-row; }
+  height: 60px;
+  background-color: #dddddd;
+  padding: 0 40px; }

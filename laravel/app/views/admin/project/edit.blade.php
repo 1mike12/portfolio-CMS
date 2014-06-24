@@ -1,3 +1,4 @@
+{{HTML::linkAction("AdminController@getIndex","Back to Admin")}}
 <h2 class="form-signup-heading">Edit {{$model}}</h2>
 <?php
 //form::label()
@@ -76,11 +77,11 @@
 
 @if(isset($delete))
 <h2>Photos</h2>
-{{ Form::button("add new photo", ["class"=>"addNewPhoto", "project_id"=>$instance->id])}}
 <div id="photoFormWrapper">
     @foreach($photos as $photo)
     @include("admin.photo.field")
     @endforeach
 </div>
+{{ Form::button("add new photo", ["class"=>"addNewPhoto btn btn-default btn-block", "project_id"=>$instance->id])}}
 @endif
 

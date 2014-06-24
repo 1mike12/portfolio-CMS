@@ -9,7 +9,12 @@ class AdminController extends BaseController {
         $talents = Talent::all();
         foreach ($talents as $talent) {
             $projects = Project::where("talent_id", "=", $talent->id)->get();
-            $talent_projects[] = ["talent" => $talent, "projects" => $projects];
+            $skills= $talent->skills;
+            $talent_projects[] = [
+                "talent" => $talent,
+                "projects" => $projects,
+                "skills"=>$skills
+            ];
         }
         View::inject("content", View::make("admin.admin")->with("talent_projects", $talent_projects));
     }

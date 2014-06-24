@@ -1,36 +1,70 @@
+@import "_variables";
 body{
     font-family: 'Open Sans', sans-serif;
+    background: #ffffff; /* Old browsers */
+    background: -moz-radial-gradient(center, ellipse cover,  #ffffff 66%, #dddddd 100%, #dddddd 100%); /* FF3.6+ */
+    background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(66%,#ffffff), color-stop(100%,#dddddd), color-stop(100%,#dddddd)); /* Chrome,Safari4+ */
+    background: -webkit-radial-gradient(center, ellipse cover,  #ffffff 66%,#dddddd 100%,#dddddd 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-radial-gradient(center, ellipse cover,  #ffffff 66%,#dddddd 100%,#dddddd 100%); /* Opera 12+ */
+    background: -ms-radial-gradient(center, ellipse cover,  #ffffff 66%,#dddddd 100%,#dddddd 100%); /* IE10+ */
+    background: radial-gradient(ellipse at center,  #ffffff 66%,#dddddd 100%,#dddddd 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#dddddd',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+
+
 }
 #header{
-    background:#333;
-    color:#FFF;
-    height:60px;
+    padding:25px 40px;
+    border-bottom:1px solid #DDD;
+    background:#FFF;
+    #logo{
+        font-size:20px;
+        color:$grey-1;
+        text-decoration:none;
+        &:hover{
+            color:$blue;
+        }
+    }
+    ul{
+        list-style-type: none;
+        @include selfClear;
+        li {
+            display: inline;
+            float:right;
+            a {
+                display:block;
+                padding:0 25px;
+            }
+        }
+    }
+}
+
+#belt{
+    margin:auto;
+    max-width:1040px;
 }
 #messageBanner{
     background:#FFFFCC;
     padding:10px;
     margin:10px;
-        
+
 }
 #contentWrapper{
     padding:0 40px 40px 40px;
 }
-#footer{
-    height:200px;
-    background:#333;
-    color:#FFF;
-}
 
 /*responsive sticky footer=============*/
-html, body {
-    height: 100%;
-    margin:0;
+#wrap {
+    min-height: 100%;
+    height: auto;
+    /* Negative indent footer by its height */
+    margin: 0 auto -60px;
+    /* Pad bottom by footer height */
+    padding: 0 0 60px;
 }
-body {
-    display: table;
-    height: 100%;
-    width: 100%;
-}
+
+/* Set the fixed height of the footer here */
 #footer {
-    display: table-row;
+    height: 60px;
+    background-color: $grey3;
+    padding:0 40px;
 }

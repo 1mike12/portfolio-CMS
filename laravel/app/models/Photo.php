@@ -8,6 +8,7 @@ class Photo extends Eloquent {
         "name" => "required",
         "weight" => "numeric"
     ];
+    public static $fileTypes = ["jpeg", "png", "jpg", "gif", "bmp", "svg"];
 
     public function getURL() {
         if (isset($this->id)) {
@@ -28,7 +29,16 @@ class Photo extends Eloquent {
     public function fullPath() {
         $movePath = $this->movePath();
         $fileName = $this->fileName();
-        return $movePath . "/" . $filename;
+        return $movePath . "\\" . $fileName;
+    }
+
+    public function detachFile() {
+        if (file_exists($this->fullPath())) {
+            unlink($this->fullPath());
+            return true;
+        }else{
+            return false;
+        }
     }
 
     //magic relational methods

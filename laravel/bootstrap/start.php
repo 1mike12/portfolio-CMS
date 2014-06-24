@@ -69,19 +69,5 @@ require $framework.'/Illuminate/Foundation/start.php';
 | from the actual running of the application and sending responses.
 |
 */
-function ppr($var, $tag = "") {
-    if (gettype($var) == "boolean") {
-        if ($var) {
-            $var = "bool- true";
-        } else {
-            $var = "bool- flase";
-        }
-    }
-    if ($tag != "") {
-        echo "<strong>$tag: </strong>";
-    }
-    echo "<pre>";
-    print_r($var);
-    echo "</pre>";
-}
+include ("helpers/1mike12.php");
 return $app;
