@@ -15,9 +15,17 @@ $brightness = "#FFFFFF";
             @include("chart")
         </div>
     </div>
-<?php $brightness = adjustBrightness($brightness, -10); ?>
+    <?php $brightness = adjustBrightness($brightness, -10); ?>
     @endforeach
 </div>
-@foreach($projects as $project)
-@include("thumb")
-@endforeach
+<div id="projectThumbWrap">
+    @foreach(array_chunk($projects->all(),3) as $projectRow)
+    <div class="row">
+        @foreach($projectRow as $project)
+        @include("thumb")
+        @endforeach
+    </div>
+    @endforeach
+</div>
+
+

@@ -12,10 +12,10 @@
         <div id='wrap'>
             <div id="header">
                 <div class="row">
-                    <a href="{{URL::to("/")}}" id="logo" class="col-xs-2">
+                    <a href="{{URL::to("/")}}" id="logo" class="col-xs-6">
                         Mike Qin
                     </a>
-                    <ul class="col-xs-10">
+                    <ul class="col-xs-6">
                         <li><a href="{{URL::to('resume')}}">resume</a></li>
                         <li><a href="{{URL::to('contact')}}">contact</a></li>
                     </ul>
@@ -43,6 +43,7 @@
         </div>
 
         <div id="footer">
+            <div class="fadeLine"></div>
             <div>
                 <a href="{{URL::action("AdminController@getIndex")}}" class="">admin</a>
                 @if(Auth::check())

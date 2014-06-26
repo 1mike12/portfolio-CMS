@@ -24,7 +24,7 @@ class ProjectController extends BaseController {
             "model" => $this->model,
             "action" => __CLASS__ . "@postCreate"
         ];
-
+        $v = $instance->startDate;
         //model specific start
         $allSkills = ProjectController::getAllSkillsArray();
         $data["allSkills"] = $allSkills;
@@ -38,9 +38,22 @@ class ProjectController extends BaseController {
         $validator = Validator::make(Input::all(), $Model::$rules);
         if ($validator->passes()) {
             $instance = new $Model(Input::all());
-            $instance->save();
-            $instance->skills()->sync(Input::get("skills"));
-            return Redirect::action("AdminController@getIndex")->with("message", "$Model added!");
+            $instance->save();//get id assigned first
+            if (Input::get("skills")) {
+                $instance->skills()->sync(Input::get("skills"));
+            }
+            if (Input::hasFile("thumbnail")) {
+
+                $thumb = Input::file("thumbnail");
+                $extension = $thumb->getClientOriginalExtension();
+                $instance->thumbnail_extension = $extension;
+                $instance->save();//save a second time with photo extension
+                $thumb->move($instance->thumbPath(), $instance->thumbFileName());
+            }
+
+
+
+            return Redirect::action("ProjectController@getEdit", $instance->id)->with("message", "$Model added!");
         } else {
             return Redirect::action(__CLASS__ . "@getCreate")
                             ->with("message", "The following errors occured:")
@@ -91,24 +104,24 @@ class ProjectController extends BaseController {
         //end model specific
         View::inject("content", View::make("admin.$this->model.edit", $data));
     }
-    
+
     public function postEdit() {
         $Model = $this->Model;
         $validator = Validator::make(Input::all(), $Model::$rules);
         if ($validator->passes()) {
             $instance = $Model::where("id", "=", Input::get("id"))->first();
             $instance->fill(Input::all());
-            
+
 
             //start model specific 
             $instance->skills()->sync(Input::get("skills"));
-            
-            if(Input::hasFile("thumbnail")){
-                
-                $thumb= Input::file("thumbnail");
-                $extension= $thumb->getClientOriginalExtension();
-                $instance->thumbnail_extension=$extension;
-                $thumb->move($instance->thumbPath(),$instance->thumbFileName());
+
+            if (Input::hasFile("thumbnail")) {
+
+                $thumb = Input::file("thumbnail");
+                $extension = $thumb->getClientOriginalExtension();
+                $instance->thumbnail_extension = $extension;
+                $thumb->move($instance->thumbPath(), $instance->thumbFileName());
             }
             //end model specific
             $instance->save();
@@ -124,11 +137,18 @@ class ProjectController extends BaseController {
     public function postDelete() {
         $Model = $this->Model;
         $instance = $Model::where("id", "=", Input::get("id"))->first();
+
         if (!$instance) {
             return Redirect::back()
                             ->with("message", "something went wrong")
                             ->withInput();
         } else {
+            //delete thumbnail
+            $instance->deleteThumb();
+            //delete all photos
+            foreach ($instance->photos as $photo) {
+                $photo->deletePhoto();
+            }
             $instance->delete();
             return Redirect::action("AdminController@getIndex")->with("message", "$Model deleted!");
         }

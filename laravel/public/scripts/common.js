@@ -1,5 +1,5 @@
 $(document).ready(function() {
-//homepage
+//homepage=============
     var $blink = $(".blinking");
     setInterval(function() {
         $blink.fadeOut("500").fadeIn("500");
@@ -22,7 +22,7 @@ $(document).ready(function() {
     var paddingTopOG = $header.css("padding-top");
     var opacityOG = $header.css("opacity");
     var heightOG = $header.css("height");
-    
+
     $(window).scroll(function() {
         var st = $(window).scrollTop();
         if (st > 30) {
@@ -41,4 +41,15 @@ $(document).ready(function() {
             }, 300);
         }
     });
+
+//project-list============================
+    //projectThumbFade
+    $("#contentWrapper").on("mouseenter", ".projectThumbFade", function(){
+        $(this).animate({opacity:.9},200);
+    });
+    
+    $("#contentWrapper").on("mouseleave", ".projectThumbFade", function(){
+        $(this).animate({opacity:0.0},200);
+    });
+
 });

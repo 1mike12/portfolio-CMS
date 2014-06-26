@@ -82,7 +82,7 @@ class PhotoController extends BaseController {
             $response["success"] = false;
             $response["messages"] = "couldn't find photo with id: $id";
         } else {
-            if ($photo->detachFile()) {
+            if ($photo->deletePhoto()) {
                 $response["messages"].="removed file " . $photo->fileName() . " from server. ";
             }
             $photo->delete();

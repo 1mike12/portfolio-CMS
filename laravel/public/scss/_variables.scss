@@ -36,13 +36,6 @@ $blue1:#0075FF;
     tbody, td,tr {margin:0; padding:0; border:0;}
     td{vertical-align:top;}
 }
-@mixin coverBackground{
-    background-repeat: no-repeat !important;
-    -webkit-background-size: cover !important;
-    -moz-background-size: cover !important;
-    background-size: cover !important;
-    background-position: center center !important;
-}
 .fadeLine{
     height:1px;
     background: #d6d6d6; /* Old browsers */
@@ -72,4 +65,21 @@ $blue1:#0075FF;
     -ms-transition: background 200ms ease-in-out;
     -o-transition: background 200ms ease-in-out;
     transition: background 200ms ease-in-out;
+}
+@mixin cover{
+    background-position:center center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+.darkGradient{
+    background: #383838; /* Old browsers */
+    background: -moz-radial-gradient(center, ellipse cover,  #383838 10%, #383838 34%, #000000 100%); /* FF3.6+ */
+    background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(10%,#383838), color-stop(34%,#383838), color-stop(100%,#000000)); /* Chrome,Safari4+ */
+    background: -webkit-radial-gradient(center, ellipse cover,  #383838 10%,#383838 34%,#000000 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-radial-gradient(center, ellipse cover,  #383838 10%,#383838 34%,#000000 100%); /* Opera 12+ */
+    background: -ms-radial-gradient(center, ellipse cover,  #383838 10%,#383838 34%,#000000 100%); /* IE10+ */
+    background: radial-gradient(ellipse at center,  #383838 10%,#383838 34%,#000000 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#383838', endColorstr='#000000',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
 }
