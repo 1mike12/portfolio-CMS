@@ -114,8 +114,10 @@ class ProjectController extends BaseController {
 
 
             //start model specific 
-            $instance->skills()->sync(Input::get("skills"));
-
+            if (Input::get("skills")){
+               $instance->skills()->sync(Input::get("skills")); 
+            }
+            
             if (Input::hasFile("thumbnail")) {
 
                 $thumb = Input::file("thumbnail");
@@ -141,6 +143,26 @@ class ProjectController extends BaseController {
         if (!$instance) {
             return Redirect::back()
                             ->with("message", "something went wrong")
+                            ->withInput();
+        } else {
+            //delete thumbnail
+            $instance->deleteThumb();
+            //delete all photos
+            foreach ($instance->photos as $photo) {
+                $photo->deletePhoto();
+            }
+            $instance->delete();
+            return Redirect::action("AdminController@getIndex")->with("message", "$Model deleted!");
+        }
+    }
+    
+    public function getDelete($id) {
+        $Model = $this->Model;
+        $instance = $Model::where("id", "=", $id);
+
+        if (!$instance) {
+            return Redirect::back()
+                            ->with("message", "Couldn't delete. $Model with id: $id not found")
                             ->withInput();
         } else {
             //delete thumbnail

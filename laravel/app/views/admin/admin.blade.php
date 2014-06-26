@@ -47,6 +47,9 @@
                         <td>
                             <a href="{{URL::action("ProjectController@getEdit", [$project->id])}}">
                                 edit
+                            </a>/
+                            <a href="{{URL::action("ProjectController@getDelete", [$project->id])}}">
+                                delete
                             </a>
                         </td>
                     </tr>
