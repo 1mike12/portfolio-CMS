@@ -7,8 +7,25 @@ class Project extends Eloquent {
     public static $rules = [
         'name' => 'required|min:1',
         "startDate" => "required|date",
-        "weight" => "numeric"
+        "weight" => "numeric",
+        "thumbnail" => "mimes:jpeg,png,svg,bmp,gif"
     ];
+
+    public function getThumbURL() {
+        if (isset($this->id)) {
+            return URL::to("assets/project-thumbnails") . "/" . $this->thumbFileName();
+        } else {
+            return URL::to("assets/defaultThumb.jpg");
+        }
+    }
+
+    public function thumbPath() {
+        return public_path() . "\assets\project-thumbnails";
+    }
+
+    public function thumbFileName() {
+        return "$this->id.$this->thumbnail_extension";
+    }
 
     //magic relational methods
     public function talent() {
@@ -26,8 +43,8 @@ class Project extends Eloquent {
     public function thumbnail() {
         return URL::to("assets/project-thumbnails") . "/" . $this->thumbnail;
     }
-    
-    public function startDate($format= "n-j-Y"){
+
+    public function startDate($format = "n-j-Y") {
         $date = new DateTime($this->startDate);
         return $date->format($format);
     }

@@ -26,7 +26,7 @@ class ProjectController extends BaseController {
         ];
 
         //model specific start
-        $allSkills = $this->getAllSkillsArray();
+        $allSkills = ProjectController::getAllSkillsArray();
         $data["allSkills"] = $allSkills;
         //model specific end
 
@@ -48,7 +48,7 @@ class ProjectController extends BaseController {
         }
     }
 
-    private function getAllSkillsArray() {
+    private static function getAllSkillsArray() {
         //[skillID=> ["name", (bool) selected] ]
         $allSkillObjs = Skill::all();
         $allSkills = [];
@@ -72,7 +72,7 @@ class ProjectController extends BaseController {
             "delete" => __CLASS__ . "@postDelete"
         ];
         //extra model specific stuff
-        $allSkills = $this->getAllSkillsArray();
+        $allSkills = ProjectController::getAllSkillsArray();
 
         $selectedSkillObjs = $instance->skills;
         $selectedSkills = [];
@@ -98,11 +98,20 @@ class ProjectController extends BaseController {
         if ($validator->passes()) {
             $instance = $Model::where("id", "=", Input::get("id"))->first();
             $instance->fill(Input::all());
-            $instance->save();
+            
 
             //start model specific 
             $instance->skills()->sync(Input::get("skills"));
+            
+            if(Input::hasFile("thumbnail")){
+                
+                $thumb= Input::file("thumbnail");
+                $extension= $thumb->getClientOriginalExtension();
+                $instance->thumbnail_extension=$extension;
+                $thumb->move($instance->thumbPath(),$instance->thumbFileName());
+            }
             //end model specific
+            $instance->save();
 
             return Redirect::action("AdminController@getIndex")->with("message", "$Model edited!");
         } else {

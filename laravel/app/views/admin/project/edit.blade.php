@@ -5,6 +5,16 @@
 //form::TYPE(name, value, [attributes])
 //form::SELECTABLE(name, value, {selected},[attributes]) --select, checkbox,radio
 
+//inbound===============
+//instance $project
+//string Model
+//string model
+//string ProjectController@postCreate
+//array $allSkills
+//----------------
+//array $photos
+//=====================
+
 ?>
 {{ Form::open(array('action'=>$action, 'class'=>'form-horizontal', "files"=>true)) }}
 
@@ -52,17 +62,12 @@
 
 <div class="form-group">
     {{ Form::label("thumbnail", "Thumbnail", ["class"=>"col-sm-2 control-label"])}}
-    <div class="col-sm-10">
-        {{ Form::text('thumbnail', $instance->thumbnail, array('class'=>'form-control', 'placeholder'=>'thumbnail')) }}
+    <img src="{{$instance->getThumbURL()}}" class="col-sm-2"/>
+    <div class="col-sm-8">
+        {{ Form::file('thumbnail',array('class'=>'form-control', 'placeholder'=>'thumbnail')) }}
     </div>
 </div>
 
-<div class="form-group">
-    {{ Form::label("cover", "Cover", ["class"=>"col-sm-2 control-label"])}}
-    <div class="col-sm-10">
-        {{ Form::text('cover', $instance->cover, array('class'=>'form-control', 'placeholder'=>'cover')) }}
-    </div>
-</div>
 {{ Form::submit('Submit', array('class'=>'btn btn-primary'))}}
 {{ Form::close() }}
 @if (isset($delete))
@@ -71,8 +76,6 @@
 {{ Form::submit("Delete ". $model, ["class"=>"btn btn-warning"])}}
 {{ Form::close() }}
 @endif
-
-
 
 
 @if(isset($delete))

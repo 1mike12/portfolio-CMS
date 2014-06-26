@@ -55,7 +55,8 @@ $blue1:#0075FF;
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d6d6d6', endColorstr='#ffffff',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
 
 }
-.r-90 {
+
+@mixin rotate-90{
     -moz-transform:rotate(-270deg); 
     -moz-transform-origin: bottom left;
     -webkit-transform: rotate(-270deg);
@@ -64,5 +65,11 @@ $blue1:#0075FF;
     -o-transform-origin:  bottom left;
     -ms-transform:     rotate(90deg);
     filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=1);
-    float:left;
+}
+@mixin backgroundTransition{
+    -webkit-transition: background 200ms ease-in-out;
+    -moz-transition: background 200ms ease-in-out;
+    -ms-transition: background 200ms ease-in-out;
+    -o-transition: background 200ms ease-in-out;
+    transition: background 200ms ease-in-out;
 }

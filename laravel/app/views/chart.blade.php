@@ -1,24 +1,35 @@
 <ul class="chart">
     <li class="axis">
-        <div class="label">MVP</div>
-        <div class="label">All Star</div>
-        <div class="label">Slugger</div>
-        <div class="label">Rookie</div>
-        <div class="label">Triple A</div></li>
-    <li class="bar teal" style="height: 95%;" title="95">
-        <div class="percent">95<span>%</span></div>
-        <div class="skill">Karate</div></li>
-    <li class="bar salmon" style="height: 90%;" title="90">
-        <div class="percent">90<span>%</span></div>
-        <div class="skill">Taekwondo</div></li>
-    <li class="bar peach" style="height: 80%;" title="80">
-        <div class="percent">80<span>%</span></div>
-        <div class="skill">Nunchucks</div></li>
-    <li class="bar lime" style="height: 75%;" title="75">
-        <div class="percent">75<span>%</span></div>
-        <div class="skill">Bow Staff</div></li>
-    <li class="bar grape" style="height: 40%;" title="40">
-        <div class="percent">40<span>%</span></div>
-        <div class="skill">Suplex</div></li>
-</ul>
+        <div class="level">Master</div>
+        <div class="level">Expert</div>
+        <div class="level">Adept</div>
+        <div class="level">Familiar</div>
+        <div class="level">Beginner</div>
+    </li>
     
+    <li class="bar" style="height: 100%;" title="95">
+        <div class="skill">CSS</div>
+        <div class="percent">Master</div>
+    </li>
+    <li class="bar" style="height: 80%;" title="90">
+        <div class="skill">HTML</div>
+        <div class="percent">Expert</div>
+        
+    </li>
+    <li class="bar" style="height: 60%;" title="80">
+         <div class="skill">MYSQL</div>
+        <div class="percent">Adept</div>
+       
+    </li>
+    <li class="bar" style="height: 40%;" title="75">
+        <div class="skill">Jquery</div>
+        <div class="percent">Familiar</div>
+        
+    </li>
+    <li class="bar" style="height: 20%;" title="40">
+        <div class="skill">Suplex</div>
+        <div class="percent">Beginner</div>
+        
+    </li>
+</ul>
+
