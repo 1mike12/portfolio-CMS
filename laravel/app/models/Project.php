@@ -58,7 +58,11 @@ class Project extends Eloquent {
             return false;
         }
     }
-    public function deletePhotos(){
-        
+    public function deleteFiles(){
+        $this->deleteThumb();
+        $photos= $this->photos;
+        foreach($photos as $photo){
+            $photo->deleteFiles();
+        }
     }
 }

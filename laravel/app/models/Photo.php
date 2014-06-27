@@ -32,7 +32,7 @@ class Photo extends Eloquent {
         return $movePath . "\\" . $fileName;
     }
 
-    public function deletePhoto() {
+    public function deleteFiles() {
         if (file_exists($this->fullPath())) {
             unlink($this->fullPath());
             return true;

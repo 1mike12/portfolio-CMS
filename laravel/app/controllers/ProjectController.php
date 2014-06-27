@@ -53,7 +53,7 @@ class ProjectController extends BaseController {
 
 
 
-            return Redirect::action("ProjectController@getEdit", $instance->id)->with("message", "$Model added!");
+            return Redirect::action(__CLASS__ . "@getEdit", $instance->id)->with("message", "$Model added!");
         } else {
             return Redirect::action(__CLASS__ . "@getCreate")
                             ->with("message", "The following errors occured:")
@@ -114,10 +114,10 @@ class ProjectController extends BaseController {
 
 
             //start model specific 
-            if (Input::get("skills")){
-               $instance->skills()->sync(Input::get("skills")); 
+            if (Input::get("skills")) {
+                $instance->skills()->sync(Input::get("skills"));
             }
-            
+
             if (Input::hasFile("thumbnail")) {
 
                 $thumb = Input::file("thumbnail");
@@ -149,13 +149,13 @@ class ProjectController extends BaseController {
             $instance->deleteThumb();
             //delete all photos
             foreach ($instance->photos as $photo) {
-                $photo->deletePhoto();
+                $photo->deleteFiles();
             }
             $instance->delete();
             return Redirect::action("AdminController@getIndex")->with("message", "$Model deleted!");
         }
     }
-    
+
     public function getDelete($id) {
         $Model = $this->Model;
         $instance = $Model::where("id", "=", $id);
@@ -166,11 +166,7 @@ class ProjectController extends BaseController {
                             ->withInput();
         } else {
             //delete thumbnail
-            $instance->deleteThumb();
-            //delete all photos
-            foreach ($instance->photos as $photo) {
-                $photo->deletePhoto();
-            }
+            $instance->deleteFiles();
             $instance->delete();
             return Redirect::action("AdminController@getIndex")->with("message", "$Model deleted!");
         }

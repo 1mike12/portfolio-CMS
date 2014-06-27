@@ -11,5 +11,8 @@ class Talent extends Eloquent {
     public function skills() {
         return $this->hasMany('Skill');
     }
+    public function projects(){
+        return $this->hasMany("Project");
+    }
 
 }

@@ -3,22 +3,50 @@
 class SkillController extends BaseController {
 
     protected $layout = "layouts.default";
+    public $Model;
+    public $model;
+
+    function __construct() {
+        $this->Model = str_replace("Controller", "", __CLASS__);
+        $this->model = strtolower($this->Model);
+    }
 
     public function getCreate() {
-        $talents = Talent::all();
-        $talentID_talentName = [];
-        foreach ($talents as $talent) {
-            $talentID_talentName[$talent->id] = $talent->name;
-        }
-        View::inject("content", View::make("admin.skill.create")->with("talentID_talentName", $talentID_talentName));
+        $Model = $this->Model;
+        $instance = new $this->Model;
+        $data = [
+            "instance" => $instance,
+            "Model" => $this->Model,
+            "model" => $this->model,
+            "action" => __CLASS__ . "@postCreate"
+        ];
+        //model specific start
+        //model specific end
+
+        View::inject("content", View::make("admin.$this->model.$this->model", $data));
     }
 
     public function postCreate() {
-        $validator = Validator::make(Input::all(), Skill::$rules);
+        $Model = $this->Model;
+        $validator = Validator::make(Input::all(), $Model::$rules);
         if ($validator->passes()) {
-            $user = new Skill(Input::all());
-            $user->save();
-            return Redirect::action(__CLASS__ . "@getIndex")->with("message", "Skill added!");
+            $instance = new $Model(Input::all());
+            $instance->save();//get id assigned first
+            if (Input::get("skills")) {
+                $instance->skills()->sync(Input::get("skills"));
+            }
+            if (Input::hasFile("thumbnail")) {
+
+                $thumb = Input::file("thumbnail");
+                $extension = $thumb->getClientOriginalExtension();
+                $instance->thumbnail_extension = $extension;
+                $instance->save();//save a second time with photo extension
+                $thumb->move($instance->thumbPath(), $instance->thumbFileName());
+            }
+
+
+
+            return Redirect::action(__CLASS__ . "@getEdit", $instance->id)->with("message", "$Model added!");
         } else {
             return Redirect::action(__CLASS__ . "@getCreate")
                             ->with("message", "The following errors occured:")
@@ -27,12 +55,55 @@ class SkillController extends BaseController {
     }
 
     public function getEdit($id) {
-        
+        $Model = $this->Model;
+        $instance = $Model::find($id);
+        if (!$instance) {
+            return View::inject("content", "$this->model with id: $id not found");
+        }
+        $data = [
+            "instance" => $instance,
+            "Model" => $this->Model,
+            "model" => $this->model,
+            "action" => __CLASS__ . "@postEdit",
+            "delete" => __CLASS__ . "@getDelete"
+        ];
+        //extra model specific stuff
+        //end model specific
+        View::inject("content", View::make("admin.$this->model.$this->model", $data));
     }
 
-    //relationship magic methods
-    public function talent() {
-        return $this->belongsTo("Talent");
+    public function postEdit() {
+        $Model = $this->Model;
+        $validator = Validator::make(Input::all(), $Model::$rules);
+        if ($validator->passes()) {
+            $instance = $Model::where("id", "=", Input::get("id"))->first();
+            $instance->fill(Input::all());
+
+
+            //start model specific 
+            //end model specific
+            $instance->save();
+
+            return Redirect::action("AdminController@getIndex")->with("message", "$Model edited!");
+        } else {
+            return Redirect::back()
+                            ->with("message", "The following errors occured:")
+                            ->withErrors($validator)->withInput();
+        }
+    }
+
+    public function getDelete($id) {
+        $Model = $this->Model;
+        $instance = $Model::where("id", "=", $id);
+
+        if (!$instance) {
+            return Redirect::back()
+                            ->with("message", "Couldn't delete. $Model with id: $id not found")
+                            ->withInput();
+        } else {
+            $instance->delete();
+            return Redirect::action("AdminController@getIndex")->with("message", "$Model deleted!");
+        }
     }
 
 }
