@@ -4,7 +4,6 @@
 //form::label()
 //form::TYPE(name, value, [attributes])
 //form::SELECTABLE(name, value, {selected},[attributes]) --select, checkbox,radio
-
 //inbound===============
 //instance $project
 //string Model
@@ -28,8 +27,12 @@
 
 <div class="form-group">
     {{ Form::label("talent_id", "Talent Name", ["class"=>"col-sm-2 control-label"])}}
+    <?php
+    $selectedTalent = isset($talentID) ? $talentID : $instance->id;
+
+    ?>
     <div class="col-sm-3">
-        {{ Form::select('talent_id', Talent::lists("name", "id"), null, ['class'=>'form-control']) }}
+        {{ Form::select('talent_id', Talent::lists("name", "id"), $selectedTalent, ['class'=>'form-control']) }}
     </div>
     {{ Form::label("startDate", "Start Date", ["class"=>"col-sm-2 control-label"])}}
     <div class="col-sm-3">

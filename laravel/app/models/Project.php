@@ -43,26 +43,38 @@ class Project extends Eloquent {
     public function thumbnail() {
         return URL::to("assets/project-thumbnails") . "/" . $this->thumbnail;
     }
-    
+
     //1mike12 don't name model methods the same as model parameters. When you call $project->parameter in a form, it will think to look for $project->parameter(), which is a function, and return an exception
     public function getStartDate($format = "n-j-Y") {
         $date = new DateTime($this->startDate);
         return $date->format($format);
     }
-    public function deleteThumb(){
-        $path= $this->thumbPath()."/".$this->thumbFileName();
-        if (file_exists($path)){
-            unlink ($path);
+
+    public function deleteThumb() {
+        $path = $this->thumbPath() . "/" . $this->thumbFileName();
+        if (file_exists($path)) {
+            unlink($path);
             return true;
-        }else{
+        } else {
             return false;
         }
     }
-    public function deleteFiles(){
+
+    public function deleteFiles() {
         $this->deleteThumb();
-        $photos= $this->photos;
-        foreach($photos as $photo){
+        $photos = $this->photos;
+        foreach ($photos as $photo) {
             $photo->deleteFiles();
         }
     }
+
+    public function printSkills() {
+        $skillString = [];
+        foreach ($this->skills->sortBy("weight") as $skill) {
+            $skillString[] = $skill->name;
+        }
+        $skillString = implode(", ", $skillString);
+        return $skillString;
+    }
+
 }

@@ -9,7 +9,7 @@ class AdminController extends BaseController {
         $talents = Talent::all();
         foreach ($talents as $talent) {
             $projects = Project::where("talent_id", "=", $talent->id)->get();
-            $skills= $talent->skills;
+            $skills= $talent->skills->sortBy("weight");
             $talent_projects[] = [
                 "talent" => $talent,
                 "projects" => $projects,

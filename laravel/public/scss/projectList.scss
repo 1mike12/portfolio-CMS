@@ -127,6 +127,9 @@
 //projectThumb_
 #projectThumbWrap{
     margin-top:40px;
+    .row{
+        margin-bottom:20px;
+    }
 }
 .projectThumbEpi{
     a.projectThumbEndo{
@@ -158,4 +161,8 @@
             }
         }
     }
+}
+//Project View======================================
+.projectPhoto{
+    max-width:100%;
 }

@@ -21,13 +21,7 @@
     </div>
     <label for="level" class="col-sm-2 control-label">Level</label>
     <div class="col-sm-4 ">
-        <select name="level" class="form-control"> 
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-        </select>
+        {{ Form::select('level', [1,2,3,4,5], $instance->level, ["class"=>"form-control"]) }}  
     </div>
 </div>
 

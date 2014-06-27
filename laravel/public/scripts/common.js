@@ -44,12 +44,18 @@ $(document).ready(function() {
 
 //project-list============================
     //projectThumbFade
-    $("#contentWrapper").on("mouseenter", ".projectThumbFade", function(){
-        $(this).animate({opacity:.9},200);
+    $("#contentWrapper").on("mouseenter", ".projectThumbFade", function() {
+        $(this).animate({opacity: .9}, 200);
     });
-    
-    $("#contentWrapper").on("mouseleave", ".projectThumbFade", function(){
-        $(this).animate({opacity:0.0},200);
+
+    $("#contentWrapper").on("mouseleave", ".projectThumbFade", function() {
+        $(this).animate({opacity: 0.0}, 200);
+    });
+
+//Project======================
+    $("#wrap").on("click", '.lightbox', function(e){
+        e.preventDefault();
+        $(this).ekkoLightbox();
     });
 
 });

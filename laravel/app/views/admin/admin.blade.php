@@ -1,5 +1,6 @@
-{{HTML::linkAction("TalentController@getCreate","new talent")}}<br>
-<a href="{{URL::to("/")}}">view homepage</a>
+<a href="{{URL::to("/")}}" class="btn btn-default">homepage</a>
+<a href="{{URL::to("/project-list")}}" class="btn btn-default">project list</a>
+<a href="{{URL::action("TalentController@getCreate")}}" class="btn btn-default">new talent</a>
 <?php
 //inbound $talent_projects[i]=
 //[ 
@@ -16,14 +17,15 @@
         <h3>skills</h3>
         <div class="skillListWrapper">
             @foreach($array["skills"] as $skill)
-            {{HTML::linkAction("SkillController@getEdit", $skill->name, $skill->id)}}
+            <code>{{HTML::linkAction("SkillController@getEdit", $skill->name, $skill->id)}}</code>
             @endforeach
             /
-            {{HTML::linkAction("SkillController@getCreate","new skill", null)}}
+            <a href="{{URL::action("SkillController@getCreate")}}" class="btn btn-xs btn-primary">new skill</a>
         </div>
         
-        
+        <h3>projects</h3>
         @if(count($array["projects"])>0)
+        <div class="table-responsive">
             <table class="table table-hover">
                 <tbody>
                     <tr>
@@ -45,10 +47,10 @@
                         ?>
                         <td>{{$skillString}}</td>
                         <td>
-                            <a href="{{URL::action("ProjectController@getEdit", [$project->id])}}">
+                            <a href="{{URL::action("ProjectController@getEdit", [$project->id])}}" class="btn btn-default btn-sm">
                                 edit
-                            </a>/
-                            <a href="{{URL::action("ProjectController@getDelete", [$project->id])}}">
+                            </a>
+                            <a href="{{URL::action("ProjectController@getDelete", [$project->id])}}" class="btn btn-default btn-sm">
                                 delete
                             </a>
                         </td>
@@ -56,10 +58,11 @@
                     @endforeach
                 </tbody> 
             </table>
+        </div>  
         @else
         <div>there are no projects in {{$array["talent"]->name}}.</div>
         @endif
-        {{HTML::linkAction("ProjectController@getCreate","new", null, ["class"=>"btn btn-default btn-block"])}}
+        {{HTML::linkAction("ProjectController@getCreate","add project", $array["talent"]->id, ["class"=>"btn btn-default btn-block"])}}
     @endforeach
 @else
 @endif

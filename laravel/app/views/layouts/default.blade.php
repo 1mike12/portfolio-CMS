@@ -2,10 +2,11 @@
     <head>
         <link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400' rel='stylesheet' type='text/css'>
         <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
-        {{HTML::style("css/default.css");}}
-        {{HTML::style("css/admin.css");}}
-        {{HTML::style("css/home.css");}}
-        {{HTML::style("css/projectList.css");}}
+        {{HTML::style("css/projectList.css")}}
+        {{HTML::style("css/ekko-lightbox.min.css")}}
+        {{HTML::style("css/default.css")}}
+        {{HTML::style("css/admin.css")}}
+        {{HTML::style("css/home.css")}}
         @yield("extraStyles")
     </head>
     <body>
@@ -18,6 +19,13 @@
                     <ul class="col-xs-6">
                         <li><a href="{{URL::to('resume')}}">resume</a></li>
                         <li><a href="{{URL::to('contact')}}">contact</a></li>
+                        @if(Auth::check())
+                        <li>
+                            <span><a href="{{URL::action("UserController@getLogout")}}">logout</a><a href="{{URL::action("AdminController@getIndex")}}" class="">admin</a></span>
+                            
+                        </li>
+                            
+                        @endif
                     </ul>
                 </div>
             </div>
@@ -44,12 +52,8 @@
 
         <div id="footer">
             <div class="fadeLine"></div>
+            all rights reserved mike qin 
             <div>
-                <a href="{{URL::action("AdminController@getIndex")}}" class="">admin</a>
-                @if(Auth::check())
-                /
-                <a href="{{URL::action("UserController@getLogout")}}">logout</a>
-                @endif
             </div>
         </div>
 
@@ -65,10 +69,10 @@ $adminURL = str_replace("index", "", $url);
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
         <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
         <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
-        {{HTML::script("scripts/common.js")}}
-        {{HTML::script("scripts/admin.js")}}
+        {{HTML::script("scripts/ekko-lightbox.min.js")}}
         {{HTML::script("scripts/jquery.zaccordion.min.js")}}
+        {{HTML::script("scripts/admin.js")}}
+        {{HTML::script("scripts/common.js")}}
         @yield("extraScripts")
-
     </body>
 </html>

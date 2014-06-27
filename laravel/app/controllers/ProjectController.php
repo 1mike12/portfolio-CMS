@@ -15,16 +15,16 @@ class ProjectController extends BaseController {
         
     }
 
-    public function getCreate() {
+    public function getCreate($talentID="") {
         $Model = $this->Model;
         $instance = new $this->Model;
         $data = [
             "instance" => $instance,
             "Model" => $this->Model,
             "model" => $this->model,
-            "action" => __CLASS__ . "@postCreate"
+            "action" => __CLASS__ . "@postCreate",
+            "talentID" => $talentID
         ];
-        $v = $instance->startDate;
         //model specific start
         $allSkills = ProjectController::getAllSkillsArray();
         $data["allSkills"] = $allSkills;
@@ -99,7 +99,7 @@ class ProjectController extends BaseController {
         $data["allSkills"] = $allSkills;
 
         //adding photos
-        $photos = Photo::where("project_id", "=", $instance->id)->get();
+        $photos = Photo::where("project_id", "=", $instance->id)->get()->sortBy("weight");
         $data["photos"] = $photos;
         //end model specific
         View::inject("content", View::make("admin.$this->model.edit", $data));
@@ -128,7 +128,7 @@ class ProjectController extends BaseController {
             //end model specific
             $instance->save();
 
-            return Redirect::action("AdminController@getIndex")->with("message", "$Model edited!");
+            return Redirect::back()->with("message", "$Model edited!");
         } else {
             return Redirect::back()
                             ->with("message", "The following errors occured:")

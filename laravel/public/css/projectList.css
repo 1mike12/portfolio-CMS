@@ -146,6 +146,8 @@
 
 #projectThumbWrap {
   margin-top: 40px; }
+  #projectThumbWrap .row {
+    margin-bottom: 20px; }
 
 .projectThumbEpi a.projectThumbEndo {
   height: 200px;
@@ -175,3 +177,6 @@
       left: 0;
       right: 0;
       bottom: 15px; }
+
+.projectPhoto {
+  max-width: 100%; }

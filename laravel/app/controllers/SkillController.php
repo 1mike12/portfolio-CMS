@@ -32,21 +32,8 @@ class SkillController extends BaseController {
         if ($validator->passes()) {
             $instance = new $Model(Input::all());
             $instance->save();//get id assigned first
-            if (Input::get("skills")) {
-                $instance->skills()->sync(Input::get("skills"));
-            }
-            if (Input::hasFile("thumbnail")) {
 
-                $thumb = Input::file("thumbnail");
-                $extension = $thumb->getClientOriginalExtension();
-                $instance->thumbnail_extension = $extension;
-                $instance->save();//save a second time with photo extension
-                $thumb->move($instance->thumbPath(), $instance->thumbFileName());
-            }
-
-
-
-            return Redirect::action(__CLASS__ . "@getEdit", $instance->id)->with("message", "$Model added!");
+            return Redirect::action("AdminController@getIndex", $instance->id)->with("message", "$Model added!");
         } else {
             return Redirect::action(__CLASS__ . "@getCreate")
                             ->with("message", "The following errors occured:")
