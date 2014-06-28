@@ -1,8 +1,8 @@
 $grey3:#DDD;
 $grey2:#CCC;
 $grey1:#AAA;
-$grey-1:#444;
-$grey-2:#222;
+$grey-1:#666;
+$grey-2:#333;
 $grey-3:#111;
 
 
@@ -36,7 +36,7 @@ $blue1:#0075FF;
     tbody, td,tr {margin:0; padding:0; border:0;}
     td{vertical-align:top;}
 }
-.fadeLine{
+.gradientLine{
     height:1px;
     background: #d6d6d6; /* Old browsers */
     background: -moz-radial-gradient(center, ellipse cover,  #d6d6d6 59%, #ffffff 71%); /* FF3.6+ */

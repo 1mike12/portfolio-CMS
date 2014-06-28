@@ -1,4 +1,4 @@
-.fadeLine {
+.gradientLine {
   height: 1px;
   background: #d6d6d6;
   /* Old browsers */
@@ -38,7 +38,7 @@
 #welcome {
   padding-top: 200px;
   font-weight: 200;
-  color: #444444; }
+  color: #666666; }
   #welcome .title h1 {
     font-size: 60px;
     display: inline-block; }

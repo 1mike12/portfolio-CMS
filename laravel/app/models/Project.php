@@ -18,7 +18,7 @@ class Project extends Eloquent {
             return URL::to("assets/defaultThumb.jpg");
         }
     }
-
+    
     public function thumbPath() {
         return public_path() . "\assets\project-thumbnails";
     }
@@ -74,6 +74,14 @@ class Project extends Eloquent {
             $skillString[] = $skill->name;
         }
         $skillString = implode(", ", $skillString);
+        return $skillString;
+    }
+    public function printSkillIDs() {
+        $skillString = [];
+        foreach ($this->skills->sortBy("weight") as $skill) {
+            $skillString[] = $skill->id;
+        }
+        $skillString = implode(",", $skillString);
         return $skillString;
     }
 

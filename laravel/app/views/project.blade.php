@@ -2,24 +2,43 @@
 //project 
 
 ?>
-<h1>{{$project->name}} <span class="small">{{$talent->name}}</span></h1>
-<h4>{{$project->printSkills()}}</h4>
-<h3>{{$project->getStartDate("M Y")}}</h3>
+<div class="projectTitleWrap">
+    <div class="row">
+        <div class="col-sm-6">
+            <h1>{{$project->name}} <span class="small">{{$talent->name}}</span></h1>
+            <div class="projectSubtitle">
+                <h3><span class="small">{{$project->getStartDate("M Y")}}</span></h3>
+                <h4>{{$project->printSkills()}}</h4>
+            </div>
+        </div>
+        <div class="col-sm-6 text-right">
+            <img src="{{$project->getThumbURL()}}"/>
+        </div>
+
+    </div>
+    <div class="gradientLine"></div>
+</div>
+
 <div class="row">
-    <div class="col-sm-4">
+    <div class="col-sm-5">
         {{$project->content}}
     </div>
-    <div class="col-sm-8">
+    <div class="col-sm-offset-1 col-sm-6">
         @foreach($project->photos->sortBy("weight") as $photo)
-        <h4>{{$photo->name}}</h4>
-        <a class="lightbox" href="{{$photo->getURL()}}" 
-           data-toggle="lightbox" 
-           data-title="{{$photo->name}}" 
-           data-footer="{{$photo->caption}}" 
-           data-gallery="project">
+        <div class="projectThumbnailEpi">
+            <a href="#" 
+               data-featherlight="#fl-{{$photo->id}}">
+                <img class="projectPhoto" src="{{$photo->getURL()}}"/>
+            </a>
+            <h4>{{$photo->name}}</h4>
+            <br>
+        </div>
+
+        <div class="lightboxSource" id="fl-{{$photo->id}}">
+            <h3>{{$photo->name}}</h3>
             <img class="projectPhoto" src="{{$photo->getURL()}}"/>
-        </a>
-        
+            <div class="photoCaption">{{$photo->caption}}</div>
+        </div>
         @endforeach
     </div>
 </div>

@@ -2,7 +2,7 @@
     <div class="title">
        <h1>
            Minimalist, Thin Type
-           <div class="fadeLine"></div>
+           <div class="gradientLine"></div>
        </h1> 
        
     </div>

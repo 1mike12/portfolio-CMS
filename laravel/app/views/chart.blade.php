@@ -7,11 +7,11 @@
         <div class="level">Beginner</div>
     </li>
     
-    <li class="bar" style="height: 100%;" title="95">
+    <li class="bar" skill_id="5" style="height: 100%;" title="95">
         <div class="skill">CSS</div>
         <div class="percent">Master</div>
     </li>
-    <li class="bar" style="height: 80%;" title="90">
+    <li class="bar" skill_id="10" style="height: 80%;" title="90">
         <div class="skill">HTML</div>
         <div class="percent">Expert</div>
         

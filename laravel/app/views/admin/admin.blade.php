@@ -32,9 +32,10 @@
                         <th>Project Name</th>
                         <th>Date Started</th>
                         <th>Skills</th>
+                        <th>Weight</th>
                         <th></th>
                     </tr>
-                    @foreach($array["projects"] as $project)
+                    @foreach($array["projects"]->sortBy("weight") as $project)
                     <?php $date = new DateTime($project->startDate);?>
                     <tr>
                         <td>{{$project->name}}</td>
@@ -46,6 +47,7 @@
                         }
                         ?>
                         <td>{{$skillString}}</td>
+                        <td>{{$project->weight}}</td>
                         <td>
                             <a href="{{URL::action("ProjectController@getEdit", [$project->id])}}" class="btn btn-default btn-sm">
                                 edit

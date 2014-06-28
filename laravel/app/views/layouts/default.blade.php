@@ -3,7 +3,7 @@
         <link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400' rel='stylesheet' type='text/css'>
         <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
         {{HTML::style("css/projectList.css")}}
-        {{HTML::style("css/ekko-lightbox.min.css")}}
+        {{HTML::style("css/featherlight.min.css")}}
         {{HTML::style("css/default.css")}}
         {{HTML::style("css/admin.css")}}
         {{HTML::style("css/home.css")}}
@@ -51,7 +51,7 @@
         </div>
 
         <div id="footer">
-            <div class="fadeLine"></div>
+            <div class="gradientLine"></div>
             all rights reserved mike qin 
             <div>
             </div>
@@ -67,12 +67,13 @@ $adminURL = str_replace("index", "", $url);
             var ADMIN = "{{$adminURL}}";
         </script>
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-        <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/amplifyjs/1.1.0/amplify.min.js"></script>
         <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
-        {{HTML::script("scripts/ekko-lightbox.min.js")}}
+        {{HTML::script("scripts/featherlight.min.js")}}
         {{HTML::script("scripts/jquery.zaccordion.min.js")}}
-        {{HTML::script("scripts/admin.js")}}
+        {{HTML::script("scripts/isotope.js")}}
         {{HTML::script("scripts/common.js")}}
-        @yield("extraScripts")
+        {{HTML::script("scripts/admin.js")}}
+        {{HTML::script("scripts/project_list.js")}}
     </body>
 </html>

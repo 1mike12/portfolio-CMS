@@ -1,4 +1,4 @@
-.fadeLine {
+.gradientLine {
   height: 1px;
   background: #d6d6d6;
   /* Old browsers */
@@ -17,7 +17,7 @@
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#d6d6d6', endColorstr='#ffffff',GradientType=1 );
   /* IE6-9 fallback on horizontal gradient */ }
 
-.darkGradient, .projectThumbEpi a.projectThumbEndo .projectThumbFade {
+.darkGradient, .projectListThumbEpi a.projectThumbEndo .projectThumbFade {
   background: #383838;
   /* Old browsers */
   background: -moz-radial-gradient(center, ellipse cover, #383838 10%, #383838 34%, black 100%);
@@ -62,7 +62,7 @@
   left: 0px;
   top: 20px;
   font-size: 20px;
-  color: #444444; }
+  color: #666666; }
 
 .chart {
   clear: both;
@@ -143,40 +143,82 @@
       -ms-transition: background 200ms ease-in-out;
       -o-transition: background 200ms ease-in-out;
       transition: background 200ms ease-in-out; }
+  .chart .bar.active {
+    background: #428bca; }
 
-#projectThumbWrap {
+.isotopeUI {
+  cursor: pointer; }
+
+.isotopeUI .caret {
+  border-top: 14px; }
+
+.isotopeUI.active {
+  color: #428bca; }
+
+.isotopeUI.active.ascending .caret {
+  border-bottom: 4px solid; }
+
+.isotopeUI.active.descending .caret {
+  border-top: 4px solid; }
+
+#projectListThumbWrap {
   margin-top: 40px; }
-  #projectThumbWrap .row {
+  #projectListThumbWrap .row {
     margin-bottom: 20px; }
 
-.projectThumbEpi a.projectThumbEndo {
-  height: 200px;
-  display: block;
-  background-position: center center;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-  text-decoration: none;
-  position: relative; }
-  .projectThumbEpi a.projectThumbEndo .projectThumbFade {
-    position: absolute;
-    opacity: 0;
-    height: 100%;
-    width: 100%;
-    color: #FFF;
-    padding: 15px;
-    text-align: center; }
-    .projectThumbEpi a.projectThumbEndo .projectThumbFade h3 {
-      font-weight: 200; }
-    .projectThumbEpi a.projectThumbEndo .projectThumbFade .skillString {
-      color: #cccccc;
+.projectListThumbEpi {
+  margin-bottom: 20px; }
+  .projectListThumbEpi a.projectThumbEndo {
+    height: 200px;
+    display: block;
+    background-position: center center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    text-decoration: none;
+    position: relative; }
+    .projectListThumbEpi a.projectThumbEndo .projectThumbFade {
       position: absolute;
-      margin-left: auto;
-      margin-right: auto;
-      left: 0;
-      right: 0;
-      bottom: 15px; }
+      opacity: 0;
+      height: 100%;
+      width: 100%;
+      color: #FFF;
+      padding: 15px;
+      text-align: center; }
+      .projectListThumbEpi a.projectThumbEndo .projectThumbFade h3 {
+        font-weight: 200; }
+      .projectListThumbEpi a.projectThumbEndo .projectThumbFade .skillString {
+        color: #cccccc;
+        position: absolute;
+        margin-left: auto;
+        margin-right: auto;
+        left: 0;
+        right: 0;
+        bottom: 15px; }
+
+.projectTitleWrap .gradientLine {
+  margin-top: 40px;
+  margin-bottom: 40px; }
+.projectTitleWrap h1 {
+  margin-top: 0; }
+.projectTitleWrap .projectSubtitle h4 {
+  font-size: 14px;
+  color: #666666; }
+.projectTitleWrap img {
+  max-width: 100%; }
+
+.projectThumbnailEpi h4 {
+  color: #666666; }
 
 .projectPhoto {
-  max-width: 100%; }
+  max-width: 100%;
+  max-height: 100%; }
+
+.lightboxSource {
+  color: #FFF;
+  display: none; }
+  .lightboxSource h3 {
+    margin-top: 0; }
+  .lightboxSource .photoCaption {
+    margin-top: 10px; }

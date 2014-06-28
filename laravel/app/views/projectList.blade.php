@@ -18,13 +18,16 @@ $brightness = "#FFFFFF";
     <?php $brightness = adjustBrightness($brightness, -10); ?>
     @endforeach
 </div>
-<div id="projectThumbWrap">
-    @foreach(array_chunk($projects->all(),3) as $projectRow)
-    <div class="row">
-        @foreach($projectRow as $project)
-        @include("thumb")
-        @endforeach
-    </div>
+<div>
+    <span>sort by: </span>
+    <span class="isotopeUI" id="sortWeight" href="#"> original order<span class="caret"></span>
+    </span>
+    <span class="isotopeUI" id="sortName" href="#"> name <span class="caret"></span></span>
+    <span class="isotopeUI" id="sortDate" href="#"> date <span class="caret"></span></span>
+</div>
+<div id="projectListThumbWrap" class="row">
+    @foreach($projects->sortBy("weight") as $project)
+    @include("thumb")
     @endforeach
 </div>
 

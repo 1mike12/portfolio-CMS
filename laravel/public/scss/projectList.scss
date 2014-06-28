@@ -122,16 +122,43 @@
             @include backgroundTransition;
         }
     }
+    .bar.active{
+        background:$blue;
+    }
 }
 
-//projectThumb_
-#projectThumbWrap{
+//projectList ==============
+//isotope UI 
+.isotopeUI{
+    cursor:pointer;
+}
+.isotopeUI .caret{
+    border-top:14px;
+}
+.isotopeUI.active{
+    color:$blue;
+}
+.isotopeUI.active.ascending{
+    .caret{
+        border-bottom: 4px solid;
+    }
+}
+
+.isotopeUI.active.descending{
+    .caret{
+        border-top: 4px solid;
+    }
+}
+
+//projectlist thumbs
+#projectListThumbWrap{
     margin-top:40px;
     .row{
         margin-bottom:20px;
     }
 }
-.projectThumbEpi{
+.projectListThumbEpi{
+    margin-bottom:20px;
     a.projectThumbEndo{
         height:200px;
         display:block;
@@ -163,6 +190,42 @@
     }
 }
 //Project View======================================
+.projectTitleWrap{
+    .gradientLine{
+        margin-top:40px;
+        margin-bottom:40px;
+    }
+    h1{
+        margin-top:0;
+    }
+    .projectSubtitle{
+        h4{
+            font-size:14px;
+            color:$grey-1;
+        }
+    }
+    img{
+        max-width:100%;
+    }
+}
+
+.projectThumbnailEpi{
+    h4{
+        color:$grey-1;
+    }
+}
 .projectPhoto{
     max-width:100%;
+    max-height:100%;
+}
+//styling lightbox source
+.lightboxSource{
+    color:#FFF;
+    display:none;
+    h3{
+        margin-top:0;
+    }
+    .photoCaption{
+        margin-top:10px;
+    }
 }
