@@ -1,35 +1,36 @@
-<ul class="chart">
-    <li class="axis">
-        <div class="level">Master</div>
-        <div class="level">Expert</div>
-        <div class="level">Adept</div>
-        <div class="level">Familiar</div>
-        <div class="level">Beginner</div>
-    </li>
-    
-    <li class="bar" skill_id="5" style="height: 100%;" title="95">
-        <div class="skill">CSS</div>
-        <div class="percent">Master</div>
-    </li>
-    <li class="bar" skill_id="10" style="height: 80%;" title="90">
-        <div class="skill">HTML</div>
-        <div class="percent">Expert</div>
-        
-    </li>
-    <li class="bar" style="height: 60%;" title="80">
-         <div class="skill">MYSQL</div>
-        <div class="percent">Adept</div>
-       
-    </li>
-    <li class="bar" style="height: 40%;" title="75">
-        <div class="skill">Jquery</div>
-        <div class="percent">Familiar</div>
-        
-    </li>
-    <li class="bar" style="height: 20%;" title="40">
-        <div class="skill">Suplex</div>
-        <div class="percent">Beginner</div>
-        
-    </li>
-</ul>
+<?php
+//inbound $array["skills"] (eloquent collection)
+$levels = [
+    5 => "Master",
+    4 => "Expert",
+    3 => "Adept",
+    2 => "Familiar",
+    1 => "Beginner",
+];
+$denominator = count($array["skills"]);
+$totalWidth = 80 / $denominator;
+$margin = $totalWidth * .125;
+if ($margin >= 1.7) {
+    $margin = 1.7;
+}
+$body = $totalWidth * .75;
 
+?>
+<div class="slideTab">{{$array["talent"]->name}}</div>
+<ul class="chart" style="<?php if ($slideCount > 0) echo "display:none;" ?>">
+    <li class="axis">
+        @foreach($levels as $number=>$level)
+        <div class="level">{{{$level}}}</div>
+        @endforeach
+    </li>
+
+    @foreach($array["skills"]->sortByDesc("level") as $skill)
+<?php $height = 20 * (int) $skill->level; ?>
+    <li class="bar" skill_height="{{$height}}%" skill_id="{{$skill->id}}" style="height: {{$height}}%; width:{{$body}}%; margin-right:{{$margin}}%; margin-left:{{$margin}}%">
+        <div class="skill">{{$skill->name}}</div>
+        <div class="percent">{{$levels[$skill->level]}}</div>
+        <div class="gradientLine"></div>
+    </li>
+    @endforeach
+</ul>
+<div class="gradientLine"></div>

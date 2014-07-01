@@ -8,17 +8,24 @@ $brightness = "#FFFFFF";
 
 ?>
 <div id="accordion">
+    <?php $slideCount = 0; ?>
     @foreach($talent_skills as $array)
     <div class="slideEpi" style="background:{{$brightness}}}">
         <div class="slideEndo">
-            <div class="slideTab">{{$array["talent"]->name}}</div>
             @include("chart")
         </div>
     </div>
-    <?php $brightness = adjustBrightness($brightness, -10); ?>
+
+    <?php
+    //lower brightness of slides & keep slideCount to do display:none to subsequent slides
+    $brightness = adjustBrightness($brightness, -10);
+    $slideCount++;
+
+    ?>
     @endforeach
 </div>
-<div>
+
+<div id="sortButtons">
     <span>sort by: </span>
     <span class="isotopeUI" id="sortWeight" href="#"> original order<span class="caret"></span>
     </span>
@@ -30,5 +37,4 @@ $brightness = "#FFFFFF";
     @include("thumb")
     @endforeach
 </div>
-
 

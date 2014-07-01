@@ -1,21 +1,19 @@
 .gradientLine {
   height: 1px;
-  background: #d6d6d6;
-  /* Old browsers */
-  background: -moz-radial-gradient(center, ellipse cover, #d6d6d6 59%, white 71%);
+  background: -moz-linear-gradient(left, rgba(214, 214, 214, 0) 0%, #d6d6d6 10%, #d6d6d6 90%, rgba(214, 214, 214, 0) 100%);
   /* FF3.6+ */
-  background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(59%, #d6d6d6), color-stop(71%, white));
+  background: -webkit-gradient(linear, left top, right top, color-stop(0%, rgba(214, 214, 214, 0)), color-stop(10%, #d6d6d6), color-stop(90%, #d6d6d6), color-stop(100%, rgba(214, 214, 214, 0)));
   /* Chrome,Safari4+ */
-  background: -webkit-radial-gradient(center, ellipse cover, #d6d6d6 59%, white 71%);
+  background: -webkit-linear-gradient(left, rgba(214, 214, 214, 0) 0%, #d6d6d6 10%, #d6d6d6 90%, rgba(214, 214, 214, 0) 100%);
   /* Chrome10+,Safari5.1+ */
-  background: -o-radial-gradient(center, ellipse cover, #d6d6d6 59%, white 71%);
-  /* Opera 12+ */
-  background: -ms-radial-gradient(center, ellipse cover, #d6d6d6 59%, white 71%);
+  background: -o-linear-gradient(left, rgba(214, 214, 214, 0) 0%, #d6d6d6 10%, #d6d6d6 90%, rgba(214, 214, 214, 0) 100%);
+  /* Opera 11.10+ */
+  background: -ms-linear-gradient(left, rgba(214, 214, 214, 0) 0%, #d6d6d6 10%, #d6d6d6 90%, rgba(214, 214, 214, 0) 100%);
   /* IE10+ */
-  background: radial-gradient(ellipse at center, #d6d6d6 59%, white 71%);
+  background: linear-gradient(to right, rgba(214, 214, 214, 0) 0%, #d6d6d6 10%, #d6d6d6 90%, rgba(214, 214, 214, 0) 100%);
   /* W3C */
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#d6d6d6', endColorstr='#ffffff',GradientType=1 );
-  /* IE6-9 fallback on horizontal gradient */ }
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00d6d6d6', endColorstr='#00d6d6d6',GradientType=1 );
+  /* IE6-9 */ }
 
 .darkGradient {
   background: #383838;
@@ -42,3 +40,9 @@
   #welcome .title h1 {
     font-size: 60px;
     display: inline-block; }
+
+.blinking {
+  width: 8px;
+  height: 18px;
+  background: #428bca;
+  display: inline-block; }

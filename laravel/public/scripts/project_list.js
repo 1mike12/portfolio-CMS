@@ -11,9 +11,23 @@ $(document).ready(function() {
         auto: false,
         height: 310,
         easing: "jswing",
-        speed: 200
+        speed: 200, 
+        slideClass:"accordion",
+        buildComplete:function(){
+            $("#accordion .chart").show();
+        },
+        animationStart: function(){
+             $("#accordion .bar").css({height:"0"});
+        },
+        animationComplete:function(){
+            $("#accordion .accordion-open .bar").each(function(i){
+                var height= $(this).attr("skill_height");
+                $(this).delay(i*50).animate({height: height},400);
+            });
+        }
     };
     $("#accordion").zAccordion($zaccordion_settings);
+
 //isotope resposnive activation-----------
     var isotopeActive = false;
 
@@ -29,7 +43,7 @@ $(document).ready(function() {
                 getSortData: {
                     name: '.name',
                     weight: '.weight',
-                    startDate: '.startDate',
+                    startDate: '.startDate'
                 }
             }
             );
@@ -44,7 +58,7 @@ $(document).ready(function() {
         }
         window.scrollTimeout = setTimeout(isotopeSwitch, 250);
     });
-//chart sorting--------------
+//isotope sorting--------------
     var $accordion = $("#accordion");
     $accordion.on("click", ".bar", function() {
         var $bar = $(this);
@@ -75,8 +89,7 @@ $(document).ready(function() {
                 var skillIDs = skillIDString.split(",");
 
                 for (var i = 0; i < selectedIDs.length; i++) {
-                    var currentID = selectedIDs[i];
-                    if (!$.inArray(currentID, skillIDs)) {
+                    if ($.inArray(selectedIDs[i], skillIDs) ===-1){
                         return false;
                     }
                 }

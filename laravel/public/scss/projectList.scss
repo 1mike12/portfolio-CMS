@@ -1,39 +1,42 @@
 @import"_variables.scss";
-
+html.constantScroll {
+    overflow: -moz-scrollbars-vertical; 
+    overflow-y: scroll;
+}
 #accordion{
-    margin-top:20px;
     -webkit-box-shadow: 0px 4px 5px 2px rgba(0,0,0,0.4);
     -moz-box-shadow: 0px 4px 5px 2px rgba(0,0,0,0.4);
     box-shadow: 0px 4px 5px 2px rgba(0,0,0,0.4);
-}
-.slideEpi{
-    -webkit-box-shadow: 0px 0px 2px 2px rgba(0,0,0,0.4);
-    -moz-box-shadow: 0px 0px 2px 2px rgba(0,0,0,0.4);
-    box-shadow: 0px 0px 2px 2px rgba(0,0,0,0.4);
-    background:#FFF;
-    .slideEndo{
-        position:relative;
+    .slideEpi{
+        -webkit-box-shadow: 0px 0px 2px 2px rgba(0,0,0,0.4);
+        -moz-box-shadow: 0px 0px 2px 2px rgba(0,0,0,0.4);
+        box-shadow: 0px 0px 2px 2px rgba(0,0,0,0.4);
+        background:#FFF;
+        padding-right:40px;
+        @media(max-width:768px){
+            overflow-y:scroll !important;
+        }
+        .slideEndo{
+            padding-right:40px;
+            padding-top:40px;
+            @media(max-width:768px){
+                padding:0;
+            }
+        }
     }
 }
+
 
 .slideTab{
     @include rotate-90;
     position:absolute;
     left:0px;
-    top:20px;
+    top:40px;
     font-size:20px;
     color:$grey-1;
-}
-
-//chart styles
-
-// VARIABLES
-
-// MIXINS
-// Calculates REMs out of pixels
-@mixin font-size($sizeValue: 16) {
-    font-size: $sizeValue + px;
-    font-size: ($sizeValue / 16) + rem;
+    @media(max-width:768px){
+        display:none;
+    }
 }
 
 // Media Queries
@@ -43,16 +46,17 @@
     }
 }
 
-// STYLES
-
+//chart-----------
 .chart {
-    clear: both;
-    padding: 0;
+    padding:0;
     width: 100%;
+    height:250px;
     @include breakPoint(sm) {
-        margin-top:20px;
-        height: 280px;//for chart
-        margin: 0 auto emCalc(-32px);
+        margin:0;
+    }
+    @media(max-width:768px){
+        padding:0;
+        height:initial;
     }
     li {
         display: block;
@@ -61,14 +65,22 @@
         text-align: right;
         vertical-align: bottom;
         height:20px;
-        @include breakPoint(sm) {
-            display: inline-block;
-            height: 280px;//for the axis
-            margin: 0 1.8% 0 0;
-            width: 13%;
-        }
+        display: inline-block;
+        height: 250px;//for the axis
+
+        -webkit-border-top-left-radius: 3px;
+        -webkit-border-top-right-radius: 3px;
+        -moz-border-radius-topleft: 3px;
+        -moz-border-radius-topright: 3px;
+        border-top-left-radius: 3px;
+        border-top-right-radius: 3px;
+
+
+
         @media(max-width:768px){
-            height:20% !important;
+            height:initial !important;
+            display:block;
+            width:100% !important;
         }
     }
     .axis { 
@@ -80,7 +92,8 @@
         }
     }
     .level {
-        margin: -14px 0 50px 0;
+        margin: -10px 0 40px 0;
+        padding-right:10px;
     }
     .percent {
         letter-spacing: -2px;
@@ -90,7 +103,6 @@
         @include breakPoint(sm) {
             display:none;
             position: absolute;
-            @include font-size(30);
         }
     }
     .skill {
@@ -114,20 +126,38 @@
         @media(max-width:768px){
             background:none;
             box-sizing: border-box;
-            border-bottom:1px solid $grey3;
         }
         &:hover{
             cursor: pointer;
             background:$blue;
             @include backgroundTransition;
         }
+        .gradientLine{
+            display:none;
+            margin-top:10px;
+            margin-bottom:10px;
+            margin-left:10%;
+            margin-right:10%;
+            @media(max-width:768px){
+                display:block;
+            }
+        }
     }
     .bar.active{
         background:$blue;
     }
 }
-
+.slideEndo > .gradientLine{
+    margin-left:10%;
+    @media(max-width:768px){
+        display:none;
+    }
+}
 //projectList ==============
+#sortButtons{
+    margin-top:40px;
+    text-align:right;
+}
 //isotope UI 
 .isotopeUI{
     cursor:pointer;
@@ -152,7 +182,7 @@
 
 //projectlist thumbs
 #projectListThumbWrap{
-    margin-top:40px;
+    margin-top:10px;
     .row{
         margin-bottom:20px;
     }

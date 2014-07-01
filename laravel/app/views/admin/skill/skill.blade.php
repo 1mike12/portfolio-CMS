@@ -21,7 +21,7 @@
     </div>
     <label for="level" class="col-sm-2 control-label">Level</label>
     <div class="col-sm-4 ">
-        {{ Form::select('level', [1,2,3,4,5], $instance->level, ["class"=>"form-control"]) }}  
+        {{ Form::select('level', [1=>1,2=>2,3=>3,4=>4,5=>5], $instance->level, ["class"=>"form-control"]) }}  
     </div>
 </div>
 

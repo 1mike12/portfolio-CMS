@@ -22,9 +22,10 @@ class HomeController extends BaseController {
         }
         $data = [
             "projects" => $projects,
-            "talent_skills" => $talent_skills
+            "talent_skills" => $talent_skills,
         ];
-
+        //add constantScroll to html element- to keep scrollbar when using isotope sorting
+        $this->layout->htmlClass= "constantScroll";
         View::inject("content", View::make("projectList", $data));
     }
 
@@ -36,7 +37,7 @@ class HomeController extends BaseController {
             "project" => $project,
             "talent" => $talent
         ];
-        
+
         View::inject("content", View::make("project", $data));
     }
 

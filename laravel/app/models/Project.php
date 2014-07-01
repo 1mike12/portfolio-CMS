@@ -70,7 +70,7 @@ class Project extends Eloquent {
 
     public function printSkills() {
         $skillString = [];
-        foreach ($this->skills->sortBy("weight") as $skill) {
+        foreach ($this->skills->sortByDesc("level") as $skill) {
             $skillString[] = $skill->name;
         }
         $skillString = implode(", ", $skillString);
