@@ -54,7 +54,7 @@
         <div id="footer">
             <div class="gradientLine"></div>
             <div class="text-center">
-                <span class="copyright">All rights reserved Mike Qin. Copyright &copy; <?php echo date("Y"); ?> Mike Qin. <a href="{{URL::to("about#plugins")}}">how is the site made?</a></span>
+                <span class="copyright">All rights reserved Mike Qin. Copyright &copy; <?php echo date("Y"); ?> Mike Qin. <a href="{{URL::to("about#plugins")}}">how is the site made?</a> <a href="{{URL::to("admin")}}">admin</a></span>
             </div>
         </div>
 

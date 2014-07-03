@@ -5,10 +5,10 @@
         <h1>About Myself</h1>
         <p>Sampling my projects, I may come off as a proverbial jack of all trades (and master of none). I admit my interests seem haphazard on the surface. However, the common thread behind everything is my hard work and passionate pursuit of combining the technical with the artistic. I learn fast, especially when it is both technical and artistic. My wide educational, experiential and personal perspectives are my greatest strengths and inform everything that I do.
         </p>
-        <a href="">Resume (pdf)</a>
+        <a href="{{URL::to("assets/personal/Mike_Qin_linkedin.pdf")}}">Resume (pdf)</a>
     </div>
     <div class="col-sm-offset-2 col-sm-4">
-        <img src="{{URL::to("assets/bw_portrait.jpg")}}"/>
+        <img src="{{URL::to("assets/personal/bw_portrait.jpg")}}"/>
     </div>
 </div>
 
@@ -47,7 +47,7 @@
     <div class="col-sm-6">
         <h3><a href="http://daylerees.com/codebright/getting-started">Laravel: Code Bright</a> <span class="small">Dayle Rees</span></h3>
         <p>
-            This book is one of the best resources on laravel, especially for a beginner. Examples are straight forward and some humor sprinkled about keeps it from being a dry tome. 
+            This book is one of the best resources on laravel, especially for a beginner. Examples are straight forward and some humor sprinkled about keeps it different from your average boring programming tome. 
         </p>
     </div>
     <div class="col-sm-6"></div>
@@ -55,6 +55,9 @@
 <div class="row">
     <div class="col-sm-6">
         <h3><a href="http://www.armagost.com/zaccordion/">zaccordion</a> <span class="small">Nate Armagost</span></h3>
+        <p>
+            I use zaccordion to create the collapsible skill charts on the project list page. This plugin is extremely simple to use and has great documentation of all of its features. 
+        </p>
     </div>
     <div class="col-sm-6">
     </div>
@@ -63,44 +66,44 @@
     <div class="col-sm-6">
         <h3><a href="http://getbootstrap.com/">Twitter Bootstrap</a></h3>
         <p>
-            creating a sliding horizontal accordion menu
+            The bootstrap css is used to create grids and for a lot of styling of the back end. It makes creating beautiful forms a breeze.
         </p>
     </div>
-    <div class="col-sm-6">link</div>
+    <div class="col-sm-6"></div>
 </div>
 <div class="row">
     <div class="col-sm-6">
         <h3><a href="http://noelboss.github.io/featherlight/">featherlight</a> <span class="small">Noël Boss</span></h3>
         <p>
-            creating a sliding horizontal accordion menu
+           Featherlight was the only lightweight and straight forward lightbox plugin that I came across. It pulls up images without the couple milliseconds of delay that others have.
         </p>
     </div>
-    <div class="col-sm-6">link</div>
+    <div class="col-sm-6"></div>
 </div>
 <div class="row">
     <div class="col-sm-6">
-        <h3>Isotope</h3>
+        <h3><a href="http://isotope.metafizzy.co/">Isotope</a> <span class="small">Metafizzy</span></h3>
         <p>
             Isotope is a jQuery plugin that allows you to create sortable, filterable tiles. It's responsive and works like black magic. 
         </p>
     </div>
-    <div class="col-sm-6"><a href="http://isotope.metafizzy.co/">link</a></div>
+    <div class="col-sm-6"></div>
 </div>
 <div class="row">
     <div class="col-sm-6">
-        <h3>Google Fonts</h3>
+        <h3><a href="http://www.google.com/fonts/specimen/Open+Sans">Google Open Sans</a></h3>
         <p>
-            Google Open Sans is a beautiful sans serif font that gives the site a clean look. 
+            Google Open Sans is a beautiful sans serif font that gives the site a clean look.
         </p>
     </div>
-    <div class="col-sm-6"><a href="http://www.google.com/fonts/specimen/Open+Sans">link</a></div>
+    <div class="col-sm-6"></div>
 </div>
 <div class="row">
     <div class="col-sm-6">
-        <h3>JQuery</h3>
+        <h3><a href="http://jquery.com/">JQuery</a></h3>
         <p>
-            Last but not least.
+            Last and certainly not least, jQuery powers all the cool visual gizmos. 
         </p>
     </div>
-    <div class="col-sm-6"><a href="http://jquery.com/">link</a></div>
+    <div class="col-sm-6"></div>
 </div>
