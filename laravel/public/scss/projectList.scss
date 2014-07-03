@@ -30,7 +30,7 @@ html.constantScroll {
 .slideTab{
     @include rotate-90;
     position:absolute;
-    left:0px;
+    left:8px;
     top:40px;
     font-size:20px;
     color:$grey-1;
@@ -67,23 +67,14 @@ html.constantScroll {
         height:20px;
         display: inline-block;
         height: 250px;//for the axis
-
-        -webkit-border-top-left-radius: 3px;
-        -webkit-border-top-right-radius: 3px;
-        -moz-border-radius-topleft: 3px;
-        -moz-border-radius-topright: 3px;
-        border-top-left-radius: 3px;
-        border-top-right-radius: 3px;
-
-
-
         @media(max-width:768px){
             height:initial !important;
             display:block;
             width:100% !important;
         }
     }
-    .axis { 
+    .axis {
+        color:$grey-2;
         display: none;
         top: emCalc(-45px);
         width: 15%;
@@ -111,26 +102,37 @@ html.constantScroll {
         overflow: hidden;
         width: 100%;
         text-align:center;
-        color:$grey-3;
         font-size:20px;
         @include breakPoint(sm) {
             bottom: 10px;
             position: absolute;
             font-size:16px;
-            color:#FFF;
         }
     }
     .bar{
-        background:$grey1;
+        color: $grey0;
+        background: -moz-linear-gradient(top,  rgba(119,119,119,1) 0%, rgba(211,211,211,0.54) 68%, rgba(255,255,255,0.02) 100%); /* FF3.6+ */
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(119,119,119,1)), color-stop(68%,rgba(211,211,211,0.54)), color-stop(100%,rgba(255,255,255,0.02))); /* Chrome,Safari4+ */
+        background: -webkit-linear-gradient(top,  rgba(119,119,119,1) 0%,rgba(211,211,211,0.54) 68%,rgba(255,255,255,0.02) 100%); /* Chrome10+,Safari5.1+ */
+        background: -o-linear-gradient(top,  rgba(119,119,119,1) 0%,rgba(211,211,211,0.54) 68%,rgba(255,255,255,0.02) 100%); /* Opera 11.10+ */
+        background: -ms-linear-gradient(top,  rgba(119,119,119,1) 0%,rgba(211,211,211,0.54) 68%,rgba(255,255,255,0.02) 100%); /* IE10+ */
+        background: linear-gradient(to bottom,  rgba(119,119,119,1) 0%,rgba(211,211,211,0.54) 68%,rgba(255,255,255,0.02) 100%); /* W3C */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#777777', endColorstr='#05ffffff',GradientType=0 ); /* IE6-9 */
+
+        background-size: auto 250px;
+        background-position:bottom;
         @include backgroundTransition;
         @media(max-width:768px){
             background:none;
             box-sizing: border-box;
         }
-        &:hover{
-            cursor: pointer;
-            background:$blue;
-            @include backgroundTransition;
+        @media(min-width:768px){
+            &:hover{
+                color:#FFF;
+                cursor: pointer;
+                background:$blue;
+                @include backgroundTransition;
+            }
         }
         .gradientLine{
             display:none;
@@ -145,6 +147,7 @@ html.constantScroll {
     }
     .bar.active{
         background:$blue;
+        color:#FFF;
     }
 }
 .slideEndo > .gradientLine{
@@ -221,6 +224,7 @@ html.constantScroll {
 }
 //Project View======================================
 .projectTitleWrap{
+    font-weight:200;
     .gradientLine{
         margin-top:40px;
         margin-bottom:40px;
@@ -228,8 +232,12 @@ html.constantScroll {
     h1{
         margin-top:0;
     }
+    h3{
+        color:$grey-1;
+    }
     .projectSubtitle{
         h4{
+            margin-top:40px;
             font-size:14px;
             color:$grey-1;
         }

@@ -6,12 +6,14 @@
     <div class="row">
         <div class="col-sm-6">
             <h1>{{$project->name}} <span class="small">{{$talent->name}}</span></h1>
+            <h3>{{$project->intro}}</h3>
             <div class="projectSubtitle">
-                <h3><span class="small">{{$project->getStartDate("M Y")}}</span></h3>
                 <h4>{{$project->printSkills()}}</h4>
             </div>
+            
         </div>
         <div class="col-sm-6 text-right">
+            <h3>{{$project->getStartDate("M Y")}}</h3>
             <img src="{{$project->getThumbURL()}}"/>
         </div>
 

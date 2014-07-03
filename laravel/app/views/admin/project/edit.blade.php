@@ -12,6 +12,7 @@
 //array $allSkills
 //----------------
 //array $photos
+//int $talentID?depends
 //=====================
 
 ?>
@@ -28,7 +29,7 @@
 <div class="form-group">
     {{ Form::label("talent_id", "Talent Name", ["class"=>"col-sm-2 control-label"])}}
     <?php
-    $selectedTalent = isset($talentID) ? $talentID : $instance->id;
+    $selectedTalent = isset($talentID) ? $talentID : $instance->talent_id;
 
     ?>
     <div class="col-sm-3">
@@ -53,6 +54,12 @@
             {{$array["name"]}}
         </label>
         @endforeach
+    </div>
+</div>
+<div class="form-group">
+    {{ Form::label("intro", "Intro", ["class"=>"col-sm-2 control-label"])}}
+    <div class="col-sm-10">
+        {{ Form::textarea('intro', $instance->intro, array('class'=>'form-control', 'placeholder'=>'Intro', "rows"=>"1")) }}
     </div>
 </div>
 

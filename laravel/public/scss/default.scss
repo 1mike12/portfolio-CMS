@@ -13,6 +13,16 @@ body{
 
 }
 #header{
+    a{
+        color:#000;
+        text-decoration:none;
+        &:hover{
+            color:$blue;
+        }
+    }
+    a.active{
+        border-bottom: 1px solid $blue;
+    }
     width:100%;
     position:fixed;
     top:0;
@@ -20,13 +30,9 @@ body{
     padding:25px 40px;
     height:80px;
     background-color: rgba(255, 255, 255, .9);
+    
     #logo{
         font-size:20px;
-        color:$grey-1;
-        text-decoration:none;
-        &:hover{
-            color:$blue;
-        }
     }
     ul{
         list-style-type: none;
@@ -71,6 +77,10 @@ body{
 #footer {
     height: 60px;
     padding:0 40px;
+    .copyright{
+        color:$grey2;
+        a{color:$grey2;}
+    }
 }
 //featherlight lightbox=========================
 .featherlight{

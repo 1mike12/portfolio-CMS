@@ -1,3 +1,6 @@
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+  font-weight: 200; }
+
 .gradientLine {
   height: 1px;
   background: -moz-linear-gradient(left, rgba(214, 214, 214, 0) 0%, #d6d6d6 10%, #d6d6d6 90%, rgba(214, 214, 214, 0) 100%);
@@ -60,12 +63,15 @@ body {
   padding: 25px 40px;
   height: 80px;
   background-color: rgba(255, 255, 255, 0.9); }
-  #header #logo {
-    font-size: 20px;
-    color: #666666;
+  #header a {
+    color: #000;
     text-decoration: none; }
-    #header #logo:hover {
+    #header a:hover {
       color: #428bca; }
+  #header a.active {
+    border-bottom: 1px solid #428bca; }
+  #header #logo {
+    font-size: 20px; }
   #header ul {
     list-style-type: none; }
     #header ul:before, #header ul:after {
@@ -106,6 +112,10 @@ body {
 #footer {
   height: 60px;
   padding: 0 40px; }
+  #footer .copyright {
+    color: #cccccc; }
+    #footer .copyright a {
+      color: #cccccc; }
 
 .featherlight {
   z-index: 101; }

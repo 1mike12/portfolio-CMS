@@ -40,5 +40,11 @@ class HomeController extends BaseController {
 
         View::inject("content", View::make("project", $data));
     }
-
+    
+    public function getContact(){
+        View::inject("content", View::make("contact"));
+    }
+    public function getAbout(){
+        View::inject("content", View::make("about"));
+    }
 }

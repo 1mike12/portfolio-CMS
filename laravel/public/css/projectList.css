@@ -1,3 +1,6 @@
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+  font-weight: 200; }
+
 .gradientLine {
   height: 1px;
   background: -moz-linear-gradient(left, rgba(214, 214, 214, 0) 0%, #d6d6d6 10%, #d6d6d6 90%, rgba(214, 214, 214, 0) 100%);
@@ -67,7 +70,7 @@ html.constantScroll {
   -ms-transform: rotate(90deg);
   filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=1);
   position: absolute;
-  left: 0px;
+  left: 8px;
   top: 40px;
   font-size: 20px;
   color: #666666; }
@@ -94,19 +97,14 @@ html.constantScroll {
     vertical-align: bottom;
     height: 20px;
     display: inline-block;
-    height: 250px;
-    -webkit-border-top-left-radius: 3px;
-    -webkit-border-top-right-radius: 3px;
-    -moz-border-radius-topleft: 3px;
-    -moz-border-radius-topright: 3px;
-    border-top-left-radius: 3px;
-    border-top-right-radius: 3px; }
+    height: 250px; }
     @media (max-width: 768px) {
       .chart li {
         height: initial !important;
         display: block;
         width: 100% !important; } }
   .chart .axis {
+    color: #333333;
     display: none;
     top: emCalc(-45px);
     width: 15%; }
@@ -131,16 +129,30 @@ html.constantScroll {
     overflow: hidden;
     width: 100%;
     text-align: center;
-    color: #111111;
     font-size: 20px; }
     @media (min-width: 768px) {
       .chart .skill {
         bottom: 10px;
         position: absolute;
-        font-size: 16px;
-        color: #FFF; } }
+        font-size: 16px; } }
   .chart .bar {
-    background: #aaaaaa;
+    color: #888888;
+    background: -moz-linear-gradient(top, #777777 0%, rgba(211, 211, 211, 0.54) 68%, rgba(255, 255, 255, 0.02) 100%);
+    /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #777777), color-stop(68%, rgba(211, 211, 211, 0.54)), color-stop(100%, rgba(255, 255, 255, 0.02)));
+    /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, #777777 0%, rgba(211, 211, 211, 0.54) 68%, rgba(255, 255, 255, 0.02) 100%);
+    /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, #777777 0%, rgba(211, 211, 211, 0.54) 68%, rgba(255, 255, 255, 0.02) 100%);
+    /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, #777777 0%, rgba(211, 211, 211, 0.54) 68%, rgba(255, 255, 255, 0.02) 100%);
+    /* IE10+ */
+    background: linear-gradient(to bottom, #777777 0%, rgba(211, 211, 211, 0.54) 68%, rgba(255, 255, 255, 0.02) 100%);
+    /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#777777', endColorstr='#05ffffff',GradientType=0 );
+    /* IE6-9 */
+    background-size: auto 250px;
+    background-position: bottom;
     -webkit-transition: background 200ms ease-in;
     -moz-transition: background 200ms ease-in;
     -ms-transition: background 200ms ease-in;
@@ -150,14 +162,16 @@ html.constantScroll {
       .chart .bar {
         background: none;
         box-sizing: border-box; } }
-    .chart .bar:hover {
-      cursor: pointer;
-      background: #428bca;
-      -webkit-transition: background 200ms ease-in;
-      -moz-transition: background 200ms ease-in;
-      -ms-transition: background 200ms ease-in;
-      -o-transition: background 200ms ease-in;
-      transition: background 200ms ease-in; }
+    @media (min-width: 768px) {
+      .chart .bar:hover {
+        color: #FFF;
+        cursor: pointer;
+        background: #428bca;
+        -webkit-transition: background 200ms ease-in;
+        -moz-transition: background 200ms ease-in;
+        -ms-transition: background 200ms ease-in;
+        -o-transition: background 200ms ease-in;
+        transition: background 200ms ease-in; } }
     .chart .bar .gradientLine {
       display: none;
       margin-top: 10px;
@@ -168,7 +182,8 @@ html.constantScroll {
         .chart .bar .gradientLine {
           display: block; } }
   .chart .bar.active {
-    background: #428bca; }
+    background: #428bca;
+    color: #FFF; }
 
 .slideEndo > .gradientLine {
   margin-left: 10%; }
@@ -231,16 +246,21 @@ html.constantScroll {
         right: 0;
         bottom: 15px; }
 
-.projectTitleWrap .gradientLine {
-  margin-top: 40px;
-  margin-bottom: 40px; }
-.projectTitleWrap h1 {
-  margin-top: 0; }
-.projectTitleWrap .projectSubtitle h4 {
-  font-size: 14px;
-  color: #666666; }
-.projectTitleWrap img {
-  max-width: 100%; }
+.projectTitleWrap {
+  font-weight: 200; }
+  .projectTitleWrap .gradientLine {
+    margin-top: 40px;
+    margin-bottom: 40px; }
+  .projectTitleWrap h1 {
+    margin-top: 0; }
+  .projectTitleWrap h3 {
+    color: #666666; }
+  .projectTitleWrap .projectSubtitle h4 {
+    margin-top: 40px;
+    font-size: 14px;
+    color: #666666; }
+  .projectTitleWrap img {
+    max-width: 100%; }
 
 .projectThumbnailEpi h4 {
   color: #666666; }

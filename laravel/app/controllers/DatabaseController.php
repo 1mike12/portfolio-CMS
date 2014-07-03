@@ -47,6 +47,7 @@ class DatabaseController extends BaseController {
             $table->increments('id');
             $table->integer("talent_id")->index()->unsigned();
             $table->string("name", 255);
+            $table->text("intro", 255)->nullable();
             $table->text("content", 255)->nullable();
             $table->string("thumbnail", 255)->nullable();
             $table->string("thubnail_extension", 255)->nullable();

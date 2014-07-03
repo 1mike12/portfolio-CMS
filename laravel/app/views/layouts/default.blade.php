@@ -17,8 +17,9 @@
                         Mike Qin
                     </a>
                     <ul class="col-xs-6">
-                        <li><a href="{{URL::to('resume')}}">resume</a></li>
-                        <li><a href="{{URL::to('contact')}}">contact</a></li>
+                        <li><a class="{{ Request::is("about")? "active": ""}}" href="{{URL::to('about')}}">about</a></li>
+                        <li><a class="{{ Request::is("contact")? "active": ""}}" href="{{URL::to('contact')}}">contact</a></li>
+                        <li><a class="{{ Request::is("project-list")? "active": ""}}" href="{{URL::to('project-list')}}">projects</a></li>
                         @if(Auth::check())
                         <li>
                             <span><a href="{{URL::action("UserController@getLogout")}}">logout</a><a href="{{URL::action("AdminController@getIndex")}}" class="">admin</a></span>
@@ -52,8 +53,8 @@
 
         <div id="footer">
             <div class="gradientLine"></div>
-            all rights reserved mike qin 
-            <div>
+            <div class="text-center">
+                <span class="copyright">All rights reserved Mike Qin. Copyright &copy; <?php echo date("Y"); ?> Mike Qin. <a href="{{URL::to("about#plugins")}}">how is the site made?</a></span>
             </div>
         </div>
 

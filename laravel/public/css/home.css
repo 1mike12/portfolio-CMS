@@ -1,3 +1,6 @@
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+  font-weight: 200; }
+
 .gradientLine {
   height: 1px;
   background: -moz-linear-gradient(left, rgba(214, 214, 214, 0) 0%, #d6d6d6 10%, #d6d6d6 90%, rgba(214, 214, 214, 0) 100%);
@@ -46,3 +49,38 @@
   height: 18px;
   background: #428bca;
   display: inline-block; }
+
+.aboutMyself {
+  font-size: 18px;
+  font-weight: 200;
+  color: #fff;
+  padding: 40px;
+  -webkit-box-shadow: inset 0px 0px 15px 0px #323232;
+  -moz-box-shadow: inset 0px 0px 15px 0px #323232;
+  box-shadow: inset 0px 0px 15px 0px #323232;
+  background: #606060;
+  /* Old browsers */
+  background: -moz-linear-gradient(-45deg, #606060 0%, #0e0e0e 100%);
+  /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, right bottom, color-stop(0%, #606060), color-stop(100%, #0e0e0e));
+  /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(-45deg, #606060 0%, #0e0e0e 100%);
+  /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(-45deg, #606060 0%, #0e0e0e 100%);
+  /* Opera 11.10+ */
+  background: -ms-linear-gradient(-45deg, #606060 0%, #0e0e0e 100%);
+  /* IE10+ */
+  background: linear-gradient(135deg, #606060 0%, #0e0e0e 100%);
+  /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#606060', endColorstr='#0e0e0e',GradientType=1 );
+  /* IE6-9 fallback on horizontal gradient */ }
+  .aboutMyself img {
+    max-width: 100%; }
+
+.experience .gradientLine {
+  margin-bottom: 10px; }
+.experience h2 {
+  text-align: center; }
+.experience p {
+  color: #333333;
+  font-size: 18px; }
