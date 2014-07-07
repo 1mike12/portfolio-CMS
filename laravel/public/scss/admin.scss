@@ -1,5 +1,14 @@
 .photoForm{
+    transition: background-color 1s ease-out;
     .photoFieldThumbnail{
         max-width:80px;
     }
+}
+.photoForm.success{
+    transition: background-color 0s ease-out;
+    background-color:#ccffcc;
+}
+.photoForm.notSuccess{
+    transition: background-color 0s ease-out;
+    background-color:#ffcccc;
 }

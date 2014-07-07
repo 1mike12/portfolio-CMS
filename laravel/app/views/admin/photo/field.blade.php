@@ -6,7 +6,7 @@ if (!isset($photo)) {
 ?>
 {{ Form::open(array('action'=>"PhotoController@postCreate", 'class'=>'photoForm form-inline', "files"=>true)) }}
 
-<div class="bg-warning">
+<div class="errorMessage">
 </div>
 <div class="row">
 

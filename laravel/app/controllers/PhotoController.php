@@ -12,7 +12,7 @@ class PhotoController extends BaseController {
         $response = ["success" => true, "messages" => "", "data" => ""];
         if ($validator->passes() && Input::hasFile("photo")) {
             $file = Input::file("photo");
-            $mime = $file->getClientOriginalExtension();
+            $mime = strtolower($file->getClientOriginalExtension());
             if (in_array($mime, Photo::$fileTypes)) {
                 $photo = new Photo(Input::all());
                 $photo->extension = $mime;
