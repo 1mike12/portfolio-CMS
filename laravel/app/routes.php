@@ -15,7 +15,7 @@ Route::controller("/", "HomeController");
 
 App::missing(function($exception)
 {
-    return Response::view('errors.missing', array(), 404);
+    return Response::view('errors.missing', array('url' => Request::server('PATH_INFO')), 404);
 });
 
 //View::inject == 
