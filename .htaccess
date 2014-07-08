@@ -1,6 +1,8 @@
 <IfModule mod_rewrite.c>
     Options -MultiViews
     RewriteEngine On
+    #dont allow access to laravel's internals
+    RewriteRule ^(app|bootstrap)$ - [F]
 
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteRule ^ index.php [L]
