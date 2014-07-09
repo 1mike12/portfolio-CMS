@@ -25,21 +25,10 @@ return array(
 			'host'      => 'localhost',
 			'database'  => 'portfolio',
 			'username'  => 'portfolio',
-			'password'  => '123456',
+			'password'  => '3Soixantepo',
 			'charset'   => 'utf8',
 			'collation' => 'utf8_unicode_ci',
 			'prefix'    => '',
-		),
-
-		'pgsql' => array(
-			'driver'   => 'pgsql',
-			'host'     => 'localhost',
-			'database' => 'homestead',
-			'username' => 'homestead',
-			'password' => 'secret',
-			'charset'  => 'utf8',
-			'prefix'   => '',
-			'schema'   => 'public',
 		),
 
 	),

@@ -26,8 +26,8 @@ $app = new Illuminate\Foundation\Application;
 
 $env = $app->detectEnvironment(array(
 
-	'local' => array('localhost'),
-        "live"=> ["miniguns.com"]
+	'local' => ['1mike12-Laptop'],
+        "live"=> ["*.websitehostserver.net"]
 
 ));
 
