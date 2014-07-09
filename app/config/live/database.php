@@ -19,12 +19,11 @@ return array(
 	*/
 
 	'connections' => array(
-
 		'mysql' => array(
 			'driver'    => 'mysql',
 			'host'      => 'localhost',
-			'database'  => 'portfolio',
-			'username'  => 'portfolio',
+			'database'  => 'miniguns_portfolio',
+			'username'  => 'miniguns_portfol',
 			'password'  => '3Soixantepo',
 			'charset'   => 'utf8',
 			'collation' => 'utf8_unicode_ci',
