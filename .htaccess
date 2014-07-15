@@ -1,9 +1,14 @@
 <IfModule mod_rewrite.c>
     Options -MultiViews
     RewriteEngine On
+
+    #redirect to non www
+    RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]
+    RewriteRule ^(.*)$ http://%1/$1 [R=301,L]
+
     #dont allow access to laravel's internals
     RewriteRule ^(app|bootstrap)$ - [F]
-
+    
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteRule ^ index.php [L]
 </IfModule>
