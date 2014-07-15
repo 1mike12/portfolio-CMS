@@ -26,7 +26,7 @@ $app = new Illuminate\Foundation\Application;
 $env = $app->detectEnvironment(function() {
     if ($_SERVER['HTTP_HOST'] == 'localhost') {
         return 'local';
-    } elseif ($_SERVER['HTTP_HOST'] == 'miniguns.com') {
+    } elseif ($_SERVER['HTTP_HOST'] == 'www.miniguns.com') {
         return 'live';
     } else {
         return 'production';
