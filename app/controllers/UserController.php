@@ -5,9 +5,9 @@ class UserController extends BaseController {
     protected $layout = "layouts.default";
 
     public function getLogin() {
-        if (Auth::check()){
+        if (Auth::check()) {
             return Redirect::back()->with("message", "You're already logged in");
-        }else{
+        } else {
             View::inject("content", View::make("user.login"));
         }
     }
@@ -21,10 +21,17 @@ class UserController extends BaseController {
                             ->withInput();
         }
     }
-    public function getRegister(){
-        View::inject("content", View::make("user.register"));
+
+    public function getRegister() {
+        $users = User::all();
+        if ($users->isEmpty()) {
+            View::inject("content", View::make("user.register"));
+        }else{
+            View::inject("content", "Can't register more than one user");
+        }
     }
-    public function postRegister(){
+    
+    public function postRegister() {
         $validator = Validator::make(Input::all(), User::$rules);
         if ($validator->passes()) {
             $user = new User(Input::all());
@@ -37,8 +44,10 @@ class UserController extends BaseController {
                             ->withErrors($validator)->withInput();
         }
     }
-    public function getLogout(){
+
+    public function getLogout() {
         Auth::logout();
         return Redirect::to("/")->with("message", "Signed out");
     }
+
 }
