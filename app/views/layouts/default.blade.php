@@ -1,13 +1,6 @@
 <html class="{{isset($htmlClass)? $htmlClass:""}}">
     <head>
-        <link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400' rel='stylesheet' type='text/css'>
-        <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
-        {{HTML::style("css/projectList.css")}}
-        {{HTML::style("css/featherlight.min.css")}}
-        {{HTML::style("css/default.css")}}
-        {{HTML::style("css/admin.css")}}
-        {{HTML::style("css/home.css")}}
-        @yield("extraStyles")
+        @include("layouts.parts.head")
     </head>
     <body>
         <div id='wrap'>
@@ -23,9 +16,7 @@
                         @if(Auth::check())
                         <li>
                             <span><a href="{{URL::action("UserController@getLogout")}}">logout</a><a href="{{URL::action("AdminController@getIndex")}}" class="">admin</a></span>
-
                         </li>
-
                         @endif
                     </ul>
                 </div>

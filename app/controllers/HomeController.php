@@ -5,7 +5,7 @@ class HomeController extends BaseController {
     protected $layout = "layouts.default";
 
     public function getIndex() {
-        View::inject("content", View::make("home"));
+        return View::make("home");
     }
 
     public function getProjectList() {
@@ -26,7 +26,7 @@ class HomeController extends BaseController {
         ];
         //add constantScroll to html element- to keep scrollbar when using isotope sorting
         $this->layout->htmlClass= "constantScroll";
-        View::inject("content", View::make("projectList", $data));
+        return View::make("projectList")->with($data);
     }
 
     public function getProject($id) {
